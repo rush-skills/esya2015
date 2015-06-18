@@ -1,12 +1,10 @@
-<%= simple_form_for(@participant_team) do |f| %>
-  <%= f.error_notification %>
+<%= form_for @participant_team, :html => { :class => 'form-horizontal form-model' } do |f| %>
 
-  <div class="form-inputs">
-    <%= f.association :team %>
-    <%= f.association :participant %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  participant_teams_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

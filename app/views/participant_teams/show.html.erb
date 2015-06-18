@@ -1,14 +1,22 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = ParticipantTeam -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => ParticipantTeam %></h1>
+</div>
 
-<p>
-  <strong>Team:</strong>
-  <%= @participant_team.team %>
-</p>
+<div class="fieldset">
+  <dl>
+  </dl>
+</div>
 
-<p>
-  <strong>Participant:</strong>
-  <%= @participant_team.participant %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              participant_teams_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_participant_team_path(@participant_team), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              participant_team_path(@participant_team),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<%= link_to 'Edit', edit_participant_team_path(@participant_team) %> |
-<%= link_to 'Back', participant_teams_path %>
