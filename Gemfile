@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -59,3 +59,10 @@ gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 gem 'bootstrap-sass-extras'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
+gem 'rails_admin'
+gem 'enumerize'
+gem "cancancan"
+gem 'bootstrap-wysihtml5-rails'
+gem 'sanitize'
+gem 'paper_trail'
+gem 'rails_admin_history_rollback'
