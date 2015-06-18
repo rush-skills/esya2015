@@ -1,27 +1,34 @@
-<h1>Listing registrations</h1>
-
-<table>
+<%- model_class = Registration -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Registration %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Participant</th>
-      <th>Event</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @registrations.each do |registration| %>
       <tr>
-        <td><%= registration.participant %></td>
-        <td><%= registration.event %></td>
-        <td><%= link_to 'Show', registration %></td>
-        <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
-        <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= registration.id %></td>
+        <td><%=l registration.created_at, format: :long %></td>
+        <td>
+          <%= link_to registration_path(registration), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to registration_path(registration), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Registration', new_registration_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_registration_path,
+            :class => 'btn btn-primary' %>
