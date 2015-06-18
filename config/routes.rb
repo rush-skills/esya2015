@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :teams
+
   resources :participant_teams
 
   resources :registrations
