@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#->Prelang (env_variables:dotenv)
+# Ignore .env file so sensitive environment variables are not checked into Git.
+.env
