@@ -1,0 +1,221 @@
+#!/bin/bash
+# ================================================
+# SHELL->PRELANG->INIT ===========================
+# ================================================
+_skip_browser_prompt=false
+_skip_git_push=false
+
+# Parse arguments/flags
+while :
+do
+  case $1 in
+    --skip-browser-prompt)
+      _skip_browser_prompt=true
+      shift
+      ;;
+    --skip-git-push)
+      _skip_git_push=true
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      printf >&2 'Warning: Unknown option (ignored): %s\n' "$1"
+      shift
+      ;;
+    *)  # No more options. Break from loop.
+      break
+      ;;
+  esac
+done
+
+# ------------------------------------------------
+# UTILITY ----------------------------------------
+# ------------------------------------------------
+_fatal_error() {
+  echo "fatal: $@"
+  exit 1
+}
+
+_command_exists() {
+  (command -v $1 >/dev/null 2>&1)
+}
+
+_require_command() {
+  if ( ! `_command_exists $1` ) ; then
+    _fatal_error "Prelang init script requires '$1' but it is not installed."
+  fi
+}
+
+_topic() {
+  echo "-----> $@"
+}
+
+_execute_sucessfully_or_exit() {
+  # Raw execution of the command
+  $@
+
+  # Check exit status
+  if [[ $? != 0 ]] ; then
+    _fatal_error "Command '$@' failed."
+  fi
+}
+
+_git_commit_all_with_message() {
+  git add .
+  git commit --all --message="$1" --author="Prelang Builder <builder@prelang.com>"
+}
+
+_git_push() {
+  # FIX: Make sure the user is on master
+  git push origin master
+}
+
+_prompt() {
+  echo -e -n "\033[1;32m"
+  echo -n $1" (y/n): "
+  echo -e -n '\033[0m'
+  read answer
+
+  if [[ $answer == "y" ]] ; then
+    return 0
+  fi
+  return 1
+}
+
+_sleep_and_open_rails_url() {
+  _rails_url="http://localhost:3000"
+
+  # FIX: Make a better way to check if the Rails server is running.
+  sleep 7
+
+  if [[ `uname` == "Darwin" ]] ; then
+    open $_rails_url
+  elif [[ `uname` == "Linux" ]] ; then
+    if ( `_command_exists xdg-open` ) ; then
+      xdg-open $_rails_url
+    fi
+  fi
+}
+
+_initialize_rvm_if_exists() {
+  # In case RVM already is sourced don't source it.
+  # FIX: Not sure this can happen since we're launching from a shebang script.
+  if ( ! `_command_exists $1` ) ; then
+    return 0
+  fi
+
+  # Source RVM if it exists
+  if [[ -f $HOME/.rvm/scripts/rvm ]] ; then
+    source $HOME/.rvm/scripts/rvm
+  fi
+}
+
+#_initialize_rbenv_if_exists() {
+  #if [[ -d $HOME/.rbenv ]] ; then
+    #export RBENV_ROOT="${HOME}/.rbenv"
+    #export PATH="${RBENV_ROOT}/bin:${PATH}"
+
+    #eval "$(rbenv init -)"
+  #fi
+#}
+
+_gem_exists_in_gemfile() {
+  (git grep -E "gem '$1'" Gemfile >/dev/null 2>&1)
+}
+
+# FIX: Not the most thorough way to check for database type but will work for
+# now.
+_database_is_postgresql() {
+  (_gem_exists_in_gemfile pg)
+}
+
+_database_is_sqlite3() {
+  (_gem_exists_in_gemfile sqlite3)
+}
+
+_postgres_is_running() {
+  if [[ `ps aux | grep postgres | grep -v grep | wc -l | sed "s/ //g" ` -gt 0 ]] ; then
+    return 0
+  fi
+  return 1
+}
+
+# ------------------------------------------------
+# MAIN -------------------------------------------
+# ------------------------------------------------
+#_initialize_rbenv_if_exists
+_initialize_rvm_if_exists
+
+_require_command "git"
+
+# FIX: Check for non-Prelang Builder commits
+
+# Run "bundle install"
+# --------------------
+_require_command "bundle"
+_topic "Running 'bundle install' to fetch and install required Ruby Gems"
+_execute_sucessfully_or_exit bundle install
+
+# FIX: Do we need this commit?
+_git_commit_all_with_message "Executed 'bundle install' to fetch and install required Ruby Gems"
+
+# Require "rake" for next few commands
+_require_command "rake"
+
+# If application is PostgreSQL, check/require server to be running before
+# database creation.
+if ( `_database_is_postgresql` && ! `_postgres_is_running` ) ; then
+  _fatal_error "PostgreSQL server is not running.  Cannot create databases."
+fi
+
+# Run "rake db:create"
+# --------------------
+_topic "Running 'rake db:create' to create development and test databases"
+_execute_sucessfully_or_exit rake db:create
+
+# Run "rake db:migrate"
+# --------------------
+_topic "Running 'rake db:migrate' (development and test) to migrate to the proper database schema"
+_execute_sucessfully_or_exit rake db:migrate
+_execute_sucessfully_or_exit rake db:migrate RAILS_ENV=test
+
+# Track schema.rb
+_git_commit_all_with_message "Executed 'rake db:migrate' (development and test) to migrate all generated migrations which created schema.rb"
+
+# Clean up
+# --------
+#_prompt "Would you like to keep this script (./prelang-init) in your repository? This will allow you to run it later if you need to reinitialize your Rails project."
+
+#if [[ $? != 0 ]] ; then
+  #_topic "Removing 'prelang-init' script"
+
+  #if ( ! test -f ./prelang-init ) ; then
+    #_fatal_error "'./prelang-init' does not exist."
+  #fi
+    
+  #_execute_sucessfully_or_exit git rm ./prelang-init
+  #_git_commit_all_with_message "Removed 'prelang-init' script after successful execution"
+#fi
+
+# Push
+# ----
+#if ( ! $_skip_git_push ) ; then
+  #_topic "Pushing git repository changes back to origin"
+  #_git_push
+#fi
+
+# Rails Server
+# ------------
+if ( ! $_skip_browser_prompt ) ; then
+  _prompt "Would you like to start the Rails server and open your running Rails application in a browser?"
+
+  if [[ $? == 0 ]] ; then
+    _sleep_and_open_rails_url &
+
+    # FIX: Will this be using the correct Rails? RVM?
+    rails server
+  fi
+fi
