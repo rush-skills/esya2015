@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @event.type %>
+</p>
+
+<p>
+  <strong>Rules:</strong>
+  <%= @event.rules %>
+</p>
+
+<p>
+  <strong>Judging:</strong>
+  <%= @event.judging %>
+</p>
+
+<p>
+  <strong>Event date time:</strong>
+  <%= @event.event_date_time %>
+</p>
+
+<p>
+  <strong>Team size:</strong>
+  <%= @event.team_size %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @event.venue %>
+</p>
+
+<p>
+  <strong>Eligibilty:</strong>
+  <%= @event.eligibilty %>
+</p>
+
+<p>
+  <strong>Registration deadline:</strong>
+  <%= @event.registration_deadline %>
+</p>
+
+<p>
+  <strong>Prizes:</strong>
+  <%= @event.prizes %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @event.contact %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @event.photo %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
