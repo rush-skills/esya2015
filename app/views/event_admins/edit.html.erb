@@ -1,6 +1,5 @@
-<h1>Editing event_admin</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @event_admin %> |
-<%= link_to 'Back', event_admins_path %>
+<%- model_class = EventAdmin -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => EventAdmin %></h1>
+</div>
+<%= render :partial => 'form' %>
