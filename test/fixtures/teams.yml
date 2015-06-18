@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tid: MyString
+  team_name: MyString
+  event_id: 
+
+two:
+  tid: MyString
+  team_name: MyString
+  event_id: 
