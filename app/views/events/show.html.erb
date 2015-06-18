@@ -1,64 +1,46 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Event -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Event %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @event.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:type) %></dt>
+      <dd><pre class="prettyprint"><%= @event.type %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:rules) %></dt>
+      <dd><pre class="prettyprint"><%= @event.rules %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:judging) %></dt>
+      <dd><pre class="prettyprint"><%= @event.judging %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:event_date_time) %></dt>
+      <dd><pre class="prettyprint"><%= @event.event_date_time %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:team_size) %></dt>
+      <dd><pre class="prettyprint"><%= @event.team_size %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:venue) %></dt>
+      <dd><pre class="prettyprint"><%= @event.venue %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:eligibilty) %></dt>
+      <dd><pre class="prettyprint"><%= @event.eligibilty %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:registration_deadline) %></dt>
+      <dd><pre class="prettyprint"><%= @event.registration_deadline %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:prizes) %></dt>
+      <dd><pre class="prettyprint"><%= @event.prizes %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:contact) %></dt>
+      <dd><pre class="prettyprint"><%= @event.contact %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:photo) %></dt>
+      <dd><pre class="prettyprint"><%= @event.photo %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Type:</strong>
-  <%= @event.type %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              events_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_event_path(@event), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              event_path(@event),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Rules:</strong>
-  <%= @event.rules %>
-</p>
-
-<p>
-  <strong>Judging:</strong>
-  <%= @event.judging %>
-</p>
-
-<p>
-  <strong>Event date time:</strong>
-  <%= @event.event_date_time %>
-</p>
-
-<p>
-  <strong>Team size:</strong>
-  <%= @event.team_size %>
-</p>
-
-<p>
-  <strong>Venue:</strong>
-  <%= @event.venue %>
-</p>
-
-<p>
-  <strong>Eligibilty:</strong>
-  <%= @event.eligibilty %>
-</p>
-
-<p>
-  <strong>Registration deadline:</strong>
-  <%= @event.registration_deadline %>
-</p>
-
-<p>
-  <strong>Prizes:</strong>
-  <%= @event.prizes %>
-</p>
-
-<p>
-  <strong>Contact:</strong>
-  <%= @event.contact %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= @event.photo %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
