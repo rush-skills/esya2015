@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :event_admins
+
   resources :participants
 
   resources :teams
