@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  rules: MyText
+  judging: MyText
+  event_date_time: 2015-06-18 13:21:29
+  team_size: 1
+  venue: MyString
+  eligibilty: MyString
+  registration_deadline: 2015-06-18 13:21:29
+  prizes: MyText
+  contact: MyText
+  photo: MyString
+
+two:
+  name: MyString
+  type: 
+  rules: MyText
+  judging: MyText
+  event_date_time: 2015-06-18 13:21:29
+  team_size: 1
+  venue: MyString
+  eligibilty: MyString
+  registration_deadline: 2015-06-18 13:21:29
+  prizes: MyText
+  contact: MyText
+  photo: MyString
