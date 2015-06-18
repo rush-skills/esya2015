@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Team -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Team %></h1>
+</div>
 
-<p>
-  <strong>Tid:</strong>
-  <%= @team.tid %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:tid) %></dt>
+      <dd><pre class="prettyprint"><%= @team.tid %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:team_name) %></dt>
+      <dd><pre class="prettyprint"><%= @team.team_name %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Team name:</strong>
-  <%= @team.team_name %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              teams_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_team_path(@team), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              team_path(@team),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Event:</strong>
-  <%= @team.event %>
-</p>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
