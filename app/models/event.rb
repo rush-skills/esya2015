@@ -63,15 +63,39 @@ class Event < ActiveRecord::Base
     edit do
       field :name
       field :type
-      field :rules
-      field :judging
+      field :rules, :wysihtml5 do
+          config_options toolbar: {
+            fa: true,
+            image: false,
+            link: false
+          } # use font-awesome instead of glyphicon, disable images
+        end
+      field :judging, :wysihtml5 do
+          config_options toolbar: {
+            fa: true,
+            image: false,
+            link: false
+          } # use font-awesome instead of glyphicon, disable images
+        end
       field :event_date_time
       field :team_size
       field :venue
       field :eligibilty
       field :registration_deadline
-      field :prizes
-      field :contact
+      field :prizes, :wysihtml5 do
+          config_options toolbar: {
+            fa: true,
+            image: false,
+            link: false
+          } # use font-awesome instead of glyphicon, disable images
+        end
+      field :contact, :wysihtml5 do
+          config_options toolbar: {
+            fa: true,
+            image: false,
+            link: false
+          } # use font-awesome instead of glyphicon, disable images
+        end
       field :photo
       field :users
     end

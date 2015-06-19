@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :static_pages
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'landings/index'
 
