@@ -8,6 +8,11 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #
+# Indexes
+#
+#  index_participant_teams_on_participant_id  (participant_id)
+#  index_participant_teams_on_team_id         (team_id)
+#
 
 require 'test_helper'
 

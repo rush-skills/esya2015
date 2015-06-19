@@ -3,10 +3,10 @@
 # Table name: participants
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  phone      :string(255)
-#  college    :string(255)
+#  name       :string
+#  email      :string
+#  phone      :string
+#  college    :string
 #  created_at :datetime
 #  updated_at :datetime
 #

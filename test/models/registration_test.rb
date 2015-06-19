@@ -8,6 +8,11 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #
+# Indexes
+#
+#  index_registrations_on_event_id        (event_id)
+#  index_registrations_on_participant_id  (participant_id)
+#
 
 require 'test_helper'
 

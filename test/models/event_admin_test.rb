@@ -8,6 +8,11 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
+# Indexes
+#
+#  index_event_admins_on_event_id  (event_id)
+#  index_event_admins_on_user_id   (user_id)
+#
 
 require 'test_helper'
 

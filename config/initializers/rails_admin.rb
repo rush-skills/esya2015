@@ -1,5 +1,8 @@
 RailsAdmin.config do |config|
 
+  config.main_app_name = ["Esya 2015", "BackOffice"]
+
+
   ### Popular gems integration
 
   ## == Devise ==
