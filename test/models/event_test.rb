@@ -17,6 +17,7 @@
 #  photo                 :string
 #  created_at            :datetime
 #  updated_at            :datetime
+#  description           :text
 #
 
 require 'test_helper'

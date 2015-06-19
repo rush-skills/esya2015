@@ -17,6 +17,7 @@
 #  photo                 :string
 #  created_at            :datetime
 #  updated_at            :datetime
+#  description           :text
 #
 
 class Event < ActiveRecord::Base
@@ -43,16 +44,37 @@ class Event < ActiveRecord::Base
     show do
       field :name
       field :type
+      field :description do
+        pretty_value do
+          bindings[:object].description.html_safe
+        end
+      end
       field :users
-      field :rules
-      field :judging
+      field :rules do
+        pretty_value do
+          bindings[:object].rules.html_safe
+        end
+      end
+      field :judging do
+        pretty_value do
+          bindings[:object].judging.html_safe
+        end
+      end
       field :event_date_time
       field :team_size
       field :venue
       field :eligibilty
       field :registration_deadline
-      field :prizes
-      field :contact
+      field :prizes do
+        pretty_value do
+          bindings[:object].prizes.html_safe
+        end
+      end
+      field :contact do
+        pretty_value do
+          bindings[:object].contact.html_safe
+        end
+      end
       field :photo
     end
     list do
@@ -63,6 +85,13 @@ class Event < ActiveRecord::Base
     edit do
       field :name
       field :type
+      field :description, :wysihtml5 do
+          config_options toolbar: {
+            fa: true,
+            image: false,
+            link: false
+          } # use font-awesome instead of glyphicon, disable images
+        end
       field :rules, :wysihtml5 do
           config_options toolbar: {
             fa: true,

@@ -30,11 +30,6 @@ class StaticPage < ActiveRecord::Base
     end
     list do
       field :name
-      field :description do
-        pretty_value do
-          bindings[:object].description.html_safe
-        end
-      end
     end
     edit do
       field :name

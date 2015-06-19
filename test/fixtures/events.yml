@@ -17,6 +17,7 @@
 #  photo                 :string
 #  created_at            :datetime
 #  updated_at            :datetime
+#  description           :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
