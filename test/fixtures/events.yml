@@ -4,7 +4,7 @@
 #
 #  id                    :integer          not null, primary key
 #  name                  :string
-#  type                  :string
+#  category              :string
 #  rules                 :text
 #  judging               :text
 #  event_date_time       :datetime

@@ -4,7 +4,7 @@
 #
 #  id                    :integer          not null, primary key
 #  name                  :string
-#  type                  :string
+#  category              :string
 #  rules                 :text
 #  judging               :text
 #  event_date_time       :datetime
@@ -29,12 +29,12 @@ class Event < ActiveRecord::Base
   has_many :teams
 
   validates :name, presence: true
-  validates :type, presence: true
+  validates :category, presence: true
   validates :team_size, presence: true
   validates :team_size, numericality: { only_integer: true, :less_than_or_equal_to => 6, :greater_than_or_equal_to => 1 }
 
   extend Enumerize
-  enumerize :type, in: ["CSE","ECE","Flagship","Non Tech","School","Workshop"]
+  enumerize :category, in: ["CSE","ECE","Flagship","Non Tech","School","Workshop"]
 
   def to_s
     self.name
@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
   rails_admin do
     show do
       field :name
-      field :type
+      field :category
       field :description do
         pretty_value do
           bindings[:object].description.html_safe
@@ -79,12 +79,12 @@ class Event < ActiveRecord::Base
     end
     list do
       field :name
-      field :type
+      field :category
       field :users
     end
     edit do
       field :name
-      field :type
+      field :category
       field :description, :wysihtml5 do
           config_options toolbar: {
             fa: true,
