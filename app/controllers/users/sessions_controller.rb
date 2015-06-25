@@ -6,6 +6,6 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def new
-    super
+    redirect_to '/users/auth/google_oauth2'
   end
 end
