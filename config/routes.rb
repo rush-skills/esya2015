@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :static_pages
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+
+  resources :static_pages
   get 'landings/index'
 
   resources :events
@@ -73,9 +75,9 @@ Rails.application.routes.draw do
   
   #->Prelang (user_login:devise/stylized_paths)
   devise_scope :user do
-    get    "login"   => "users/sessions#new",         as: :new_user_session
-    post   "login"   => "users/sessions#create",      as: :user_session
-    delete "signout" => "users/sessions#destroy",     as: :destroy_user_session
+    get    "users/login"   => "users/sessions#new",         as: :new_user_session
+    post   "users/login"   => "users/sessions#create",      as: :user_session
+    delete "users/signout" => "users/sessions#destroy",     as: :destroy_user_session
     
     get    "signup"  => "users/registrations#new",    as: :new_user_registration
     post   "signup"  => "users/registrations#create", as: :user_registration
