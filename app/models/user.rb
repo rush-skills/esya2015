@@ -17,6 +17,8 @@
 #  updated_at             :datetime         not null
 #  name                   :string
 #  role                   :integer
+#  provider               :string
+#  uid                    :string
 #
 # Indexes
 #
@@ -28,9 +30,8 @@ class User < ActiveRecord::Base
   has_paper_trail
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :trackable, :validatable
+  # :confirmable, :lockable, :timeoutable and :omniauthable:registerable,
+  devise  :trackable, :omniauthable, :omniauth_providers => [:google_oauth2]
   has_many :event_admins
   has_many :events, through: :event_admins
 
@@ -43,6 +44,21 @@ class User < ActiveRecord::Base
   def to_s
     self.name
   end
+
+  def self.from_omniauth(auth)
+    if auth.info.email.split("@").last == "iiitd.ac.in"
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        # user.password = Devise.friendly_token[0,20]
+        user.name = auth.info.name   # assuming the user model has a name
+        # user.image = auth.info.image # assuming the user model has an image
+      end
+    else
+      Rails.logger.warn "Non IIITD access from "+ auth.info.email.to_s
+      nil
+    end
+  end
+
   rails_admin do
     show do
       field :name
@@ -64,8 +80,8 @@ class User < ActiveRecord::Base
       field :name
       field :email
       field :role
-      field :password
-      field :password_confirmation
+      # field :password
+      # field :password_confirmation
       field :events
     end
   end

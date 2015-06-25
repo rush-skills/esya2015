@@ -7,6 +7,19 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_path, :alert => exception.message
   end
 
+  def new_session_path(scope=nil)
+    '/users/auth/google_oauth2'
+  end
+  def session_path(scope=nil)
+    '/users/auth/google_oauth2'
+  end
+  def after_sign_out_path_for(resource)
+    '/'
+  end
+  def after_sign_in_path_for(resource)
+    '/admin'
+    # return the path based on resource
+  end
   private
 
   #-> Prelang (user_login:devise)

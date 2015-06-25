@@ -52,7 +52,7 @@ end
 gem 'google-analytics-rails'
 gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
 gem 'binding_of_caller'
 gem 'simple_form'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'

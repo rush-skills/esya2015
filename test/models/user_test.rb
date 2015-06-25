@@ -17,6 +17,8 @@
 #  updated_at             :datetime         not null
 #  name                   :string
 #  role                   :integer
+#  provider               :string
+#  uid                    :string
 #
 # Indexes
 #
