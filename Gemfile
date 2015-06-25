@@ -68,3 +68,4 @@ gem 'paper_trail'
 gem 'rails_admin_history_rollback'
 gem 'annotate'
 gem 'carrierwave'
+gem 'mysql2', group: :production
