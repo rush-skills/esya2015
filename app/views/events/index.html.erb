@@ -7,7 +7,7 @@
     <tr>
       <th>ID</th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:type) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
       <th><%= model_class.human_attribute_name(:rules) %></th>
       <th><%= model_class.human_attribute_name(:judging) %></th>
       <th><%= model_class.human_attribute_name(:event_date_time) %></th>
@@ -27,7 +27,7 @@
       <tr>
         <td><%= event.id %></td>
         <td><%= event.name %></td>
-        <td><%= event.type %></td>
+        <td><%= event.category %></td>
         <td><%= event.rules %></td>
         <td><%= event.judging %></td>
         <td><%= event.event_date_time %></td>

@@ -33,6 +33,8 @@ class Event < ActiveRecord::Base
   validates :team_size, presence: true
   validates :team_size, numericality: { only_integer: true, :less_than_or_equal_to => 6, :greater_than_or_equal_to => 1 }
 
+  mount_uploader :photo, PhotoUploader
+  attr_accessor :photo_cache, :remove_photo
   extend Enumerize
   enumerize :category, in: ["CSE","ECE","Flagship","Non Tech","School","Workshop"]
 
@@ -85,6 +87,12 @@ class Event < ActiveRecord::Base
     edit do
       field :name
       field :category
+      field :team_size
+      field :photo
+      field :event_date_time
+      field :venue
+      field :eligibilty
+      field :registration_deadline
       field :description, :wysihtml5 do
           config_options toolbar: {
             fa: true,
@@ -106,11 +114,6 @@ class Event < ActiveRecord::Base
             link: false
           } # use font-awesome instead of glyphicon, disable images
         end
-      field :event_date_time
-      field :team_size
-      field :venue
-      field :eligibilty
-      field :registration_deadline
       field :prizes, :wysihtml5 do
           config_options toolbar: {
             fa: true,
@@ -125,7 +128,6 @@ class Event < ActiveRecord::Base
             link: false
           } # use font-awesome instead of glyphicon, disable images
         end
-      field :photo
       field :users
     end
   end
