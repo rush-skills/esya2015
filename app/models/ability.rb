@@ -33,8 +33,9 @@ class Ability
     if user# && user.admin?
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
+      can :read, [Event,StaticPage]
       # if user.role? :superadmin
-        can :manage, :all             # allow superadmins to do anything
+        # can :manage, :all             # allow superadmins to do anything
       # elsif user.role? :manager
       #   can :manage, [User, Product]  # allow managers to do anything to products and users
       # elsif user.role? :sales
@@ -49,6 +50,8 @@ class Ability
         cannot :delete, [Participant,ParticipantTeam,Registration,Team]
       elsif user.role.event_head?
         # can :manage, Event, object if object.user
+      elsif user.role.pr?
+        can :manage, StaticPage
       else
         # can :manage, [Blogger, Journalist, FailedJournalistAttempt, FailedBloggerAttempt, PublishedBlogger, PublishedJournalist]  # allow users to do anything to journalist and blogger related stuff
         # cannot :destroy, [Blogger, Journalist, FailedJournalistAttempt, FailedBloggerAttempt, PublishedBlogger, PublishedJournalist]  # dont allow users to delete journalist and blogger related stuff
