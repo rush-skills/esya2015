@@ -42,6 +42,9 @@ class Event < ActiveRecord::Base
     self.name
   end
 
+  def info
+    return '<p>Event Name: '+self.name.to_s+'</p><p>Category: '+self.category.to_s+'</p><p>Team size limit: '+self.team_size.to_s+'</p><p>Eligibility: '+self.eligibilty.to_s+'</p><p>Time: '+self.event_date_time.strftime("%D %r")+'</p><p>Registration Deadline: '+self.registration_deadline.strftime("%D %r")+'</p><p>Venue: '+self.venue.to_s+'</p>'
+  end
   rails_admin do
     show do
       field :name

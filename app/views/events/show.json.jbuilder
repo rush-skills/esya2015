@@ -1,4 +1,5 @@
 json.extract! @event, :id, :name, :category, :event_date_time, :team_size, :venue, :eligibilty, :registration_deadline, :photo, :created_at, :updated_at
+json.info raw @event.info
 json.description raw @event.description
 json.rules raw @event.rules
 json.judging raw @event.judging
