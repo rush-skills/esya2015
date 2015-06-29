@@ -12,8 +12,6 @@
 *
 *= require_self
 *= require ide/terminal
-*= require ide/reset
-*= requrie ide/editor
 */
 @import 'foundation_and_overrides';
 @import 'foundation-icons';
@@ -80,7 +78,7 @@
 }
 body {
   font-family:"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
-  overflow: hidden;
+  // overflow: hidden;
 }
 #navigation {
   background-color: rgb(26, 25, 26);
