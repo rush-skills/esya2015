@@ -43,7 +43,9 @@ class Event < ActiveRecord::Base
   end
 
   def info
-    string = '<p>Event Name: '+self.name.to_s+'</p>'
+    string = ""
+    string += '<img height="250px" src="'+self.photo.url+'">' if self.photo.present?
+    string += '<p>Event Name: '+self.name.to_s+'</p>'
     string +='<p>Category: '+self.category.to_s+'</p>'
     string +='<p>Team size limit: '+self.team_size.to_s+' people</p>'
     string +='<p>Eligibility: '+self.eligibilty.to_s+'</p>' if self.eligibilty.present?
