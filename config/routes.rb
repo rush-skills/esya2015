@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   root 'landings#coming_soon'
   get '/abcd' => 'landings#home'
   get '/coming_soon' => 'landings#index'
+
+  get '/pcj' => redirect("https://docs.google.com/a/iiitd.ac.in/forms/d/1fCqlJgchtazO-ZPOM1TniR_k4OfSOTvABJ584xrQJo4/viewform")
+
   devise_scope :user do
     get    "users/login"   => "users/sessions#new",         as: :new_user_session
     post   "users/login"   => "users/sessions#create",      as: :user_session
     delete "users/signout" => "users/sessions#destroy",     as: :destroy_user_session
-    
     # get    "signup"  => "users/registrations#new",    as: :new_user_registration
     # post   "signup"  => "users/registrations#create", as: :user_registration
     # put    "signup"  => "users/registrations#update", as: :update_user_registration
