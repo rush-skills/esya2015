@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'landings#index'
+  root 'landings#coming_soon'
   get '/abcd' => 'landings#home'
-  get '/coming_soon' => 'landings#coming_soon'
+  get '/coming_soon' => 'landings#index'
   devise_scope :user do
     get    "users/login"   => "users/sessions#new",         as: :new_user_session
     post   "users/login"   => "users/sessions#create",      as: :user_session

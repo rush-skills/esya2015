@@ -1,6 +1,5 @@
 class LandingsController < ApplicationController
-  layout 'ide', only: [:home]
-  layout 'cs', only: [:coming_soon]
+  layout :resolve_layout
   def index
   end
   def home
@@ -8,5 +7,20 @@ class LandingsController < ApplicationController
   def mhome
   end
   def coming_soon
+  end
+
+  private
+
+  def resolve_layout
+    case action_name
+    when "index", "mhone"
+      "application"
+    when "home"
+      "ide"
+    when "coming_soon"
+      "cs"
+    else
+      "application"
+    end
   end
 end
