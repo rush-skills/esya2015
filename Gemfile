@@ -6,7 +6,7 @@ gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -69,3 +69,5 @@ gem 'rails_admin_history_rollback'
 gem 'annotate'
 gem 'carrierwave'
 gem 'mysql2', group: :production
+gem 'foundation-rails', '~> 5.5.0'
+gem 'foundation-icons-sass-rails'

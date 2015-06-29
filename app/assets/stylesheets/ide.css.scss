@@ -1,0 +1,207 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any styles
+* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+* file per style scope.
+*
+*= require_self
+*= require ide/terminal
+*= require ide/reset
+*= requrie ide/editor
+*/
+@import 'foundation_and_overrides';
+@import 'foundation-icons';
+
+
+// Aneesh inline css starts here
+
+.nav_entry {
+  color: white;
+}
+.nano {
+  position : relative;
+  width    : 100%;
+  height   : 100%;
+  overflow : hidden;
+}
+.nano > .nano-content {
+  position      : absolute;
+  overflow      : scroll;
+  overflow-x    : hidden;
+  top           : 0;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+}
+.nano > .nano-content:focus {
+  outline: thin dotted;
+}
+.nano > .nano-content::-webkit-scrollbar {
+  display: none;
+}
+.has-scrollbar > .nano-content::-webkit-scrollbar {
+  display: block;
+}
+.nano > .nano-pane {
+  background : rgba(0,0,0,.25);
+  position   : absolute;
+  width      : 10px;
+  right      : 0;
+  top        : 0;
+  bottom     : 0;
+  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : .01;
+  -webkit-transition    : .2s;
+  -moz-transition       : .2s;
+  -o-transition         : .2s;
+  transition            : .2s;
+  -moz-border-radius    : 5px;
+  -webkit-border-radius : 5px;
+  border-radius         : 5px;
+}
+.nano > .nano-pane > .nano-slider {
+  background: #444;
+  background: rgba(0,0,0,.5);
+  position              : relative;
+  margin                : 0 1px;
+  -moz-border-radius    : 3px;
+  -webkit-border-radius : 3px;
+  border-radius         : 3px;
+}
+.nano:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed {
+  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : 0.99;
+}
+body {
+  font-family:"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+#navigation {
+  background-color: rgb(26, 25, 26);
+  height: 97%;
+}
+#logo {
+  height: 50px;
+}
+.logo1 {
+  padding-right: 20px;
+  border-right: solid 1px #ccc;
+}
+textarea {
+  background-color: #222;
+}
+#ide_nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#nav-list-text {
+  margin-left: 2px;
+}
+#ide_nav > li {
+  padding: 5px;m: uppercase;
+
+}
+#ide_nav > li:hover {
+  background: red;
+  text-decoration-color: white;
+}
+
+#windowPanel, #navPanel {
+  height: 600px;
+  overflow: scroll;
+
+}
+
+#commandLine {
+  height: 100%;
+  background-color: black;
+  border-color: black;
+  border-size: 3px;
+}
+
+
+i {
+  margin-right: 5px;
+}
+
+.tab-title.active a{
+  border-right: solid 3px #666;
+}
+
+#tabs_esya {
+}
+
+#files_nav {
+  float: left;
+}
+a {
+  color: white;
+}
+/* CSS Tree menu styles */
+ol.tree * {
+  font-size: 20px;
+}
+
+ol.tree
+{
+  min-width: 200px;
+  width:100%;
+}
+ol {
+  padding: 0;
+}
+li
+{
+  position: relative;
+  margin-left: -15px;
+  list-style: none;
+}
+
+label {
+  color: rgb(114, 148, 215);
+}
+li input
+{
+  position: absolute;
+  left: 0;
+  margin-left: 0;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+  height: 1em;
+  width: 1em;
+  top: 0;
+}
+li input + ol
+{
+  margin: -0.938em 0 0 -44px; /* 15px */
+  height: 1em;
+}
+li input + ol > li
+{
+  display: none; margin-left: -14px !important; padding-left: 1px;
+}
+li label
+{
+  cursor: pointer;
+  display: block;
+}
+
+li input:checked + ol
+{
+  margin: -1.25em 0 0 -44px; /* 20px */
+  padding: 1.563em 0 0 80px;
+  height: auto;
+}
+li input:checked + ol > li { display: block; margin: 0 0 0.125em;  /* 2px */}
+li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
+
+
+// aneesh inline css ends here
