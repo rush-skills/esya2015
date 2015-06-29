@@ -43,7 +43,13 @@ class Event < ActiveRecord::Base
   end
 
   def info
-    return '<p>Event Name: '+self.name.to_s+'</p><p>Category: '+self.category.to_s+'</p><p>Team size limit: '+self.team_size.to_s+'</p><p>Eligibility: '+self.eligibilty.to_s+'</p><p>Time: '+self.event_date_time.strftime("%D %r")+'</p><p>Registration Deadline: '+self.registration_deadline.strftime("%D %r")+'</p><p>Venue: '+self.venue.to_s+'</p>'
+    string = '<p>Event Name: '+self.name.to_s+'</p>'
+    string +='<p>Category: '+self.category.to_s+'</p>'
+    string +='<p>Team size limit: '+self.team_size.to_s+'</p>'
+    string +='<p>Eligibility: '+self.eligibilty.to_s+'</p>' if self.eligibilty
+    string += '<p>Time: '+self.event_date_time.strftime("%D %r")+'</p>' if self.event_date_time
+    string += '<p>Registration Deadline: '+self.registration_deadline.strftime("%D %r")+'</p>' if self.registration_deadline
+    string += '<p>Venue: '+self.venue.to_s+'</p>' if self.venue
   end
   rails_admin do
     show do
