@@ -19,7 +19,7 @@
 
 // Aneesh inline css starts here
 
-.nav_entry {
+.nav_entry, .event_link {
   color: white;
 }
 .nano {
@@ -147,11 +147,11 @@ ol.tree * {
   font-size: 20px;
 }
 
-ol.tree
-{
-  min-width: 200px;
-  width:100%;
-}
+// ol.tree
+// {
+//   min-width: 200px;
+//   width:100%;
+// }
 ol {
   padding: 0;
 }
