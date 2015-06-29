@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get '/coming_soon' => 'landings#index'
 
   get '/pcj' => redirect("https://docs.google.com/a/iiitd.ac.in/forms/d/1fCqlJgchtazO-ZPOM1TniR_k4OfSOTvABJ584xrQJo4/viewform")
-
+  get '/blog' => redirect("/blog/")
+  get '/archive/2014' => redirect("/archive/2014/")
   devise_scope :user do
     get    "users/login"   => "users/sessions#new",         as: :new_user_session
     post   "users/login"   => "users/sessions#create",      as: :user_session
