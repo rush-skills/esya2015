@@ -31,7 +31,7 @@ $(window).load(function() {
 		  // console.log(type);
 		  // console.log(data[type]);
 			editor.setValue(data[type], true);
-			$('#first_tab').html(data["name"]);
+			$('#first_tab').html(data["category"] + " | " + data["name"]);
 		});
 	});
 });

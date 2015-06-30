@@ -89,7 +89,7 @@ body {
 }
 .logo1 {
   padding-right: 20px;
-  border-right: solid 1px #ccc;
+  border-right: solid 1px #4288FF;
 }
 textarea {
   background-color: #222;
@@ -130,7 +130,7 @@ i {
 }
 
 .tab-title.active a{
-  border-right: solid 3px #666;
+  border-right: solid 3px #4288FF;
 }
 
 #tabs_esya {
@@ -139,12 +139,15 @@ i {
 #files_nav {
   float: left;
 }
-a {
+a, a:visited {
   color: white;
+}
+a:hover,a:active{
+  color: #4288FF;
 }
 /* CSS Tree menu styles */
 ol.tree * {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 // ol.tree
@@ -163,7 +166,7 @@ li
 }
 
 label {
-  color: rgb(114, 148, 215);
+  color: #4288FF;
 }
 li input
 {

@@ -44,15 +44,19 @@ class Event < ActiveRecord::Base
 
   def info
     string = ""
-    string += '<img height="250px" src="'+self.photo.url+'">' if self.photo.present?
-    string += '<p>Event Name: '+self.name.to_s+'</p>'
-    string +='<p>Category: '+self.category.to_s+'</p>'
-    string +='<p>Team size limit: '+self.team_size.to_s+' people</p>'
-    string +='<p>Eligibility: '+self.eligibilty.to_s+'</p>' if self.eligibilty.present?
-    string += '<p>Time: '+self.event_date_time.strftime("%D %r")+'</p>' if self.event_date_time.present?
-    string += '<p>Registration Deadline: '+self.registration_deadline.strftime("%D %r")+'</p>' if self.registration_deadline.present?
-    string += '<p>Venue: '+self.venue.to_s+'</p>' if self.venue.present?
-    string
+    string += '<div class="image-center"><img height="250px" src="'+self.photo.url+'"></div>' if self.photo.present?
+    # string += '<p>Event Name: '+self.name.to_s+'</p>'
+    # string +='<p>Category: '+self.category.to_s+'</p>'
+    string +='<h2 align="center"><b>Team size limit:</b> '+self.team_size.to_s+' people'
+    string +='&nbsp&nbsp|&nbsp&nbsp<b>Eligibility:</b> '+self.eligibilty.to_s if self.eligibilty.present?
+    string += '&nbsp&nbsp|&nbsp&nbsp<b>Time:</b> '+self.event_date_time.strftime("%D %r") if self.event_date_time.present?
+    string += '<br><b>Registration Deadline:</b> '+self.registration_deadline.strftime("%D %r") if self.registration_deadline.present?
+    string += '&nbsp&nbsp|&nbsp&nbsp<b>Venue:</b> '+self.venue.to_s if self.venue.present?
+    string += '</h2>'
+  end
+  def combined
+    string = info
+    string += "<h1>Description</h1>" + self.description.to_s if self.description.present?
   end
   rails_admin do
     show do
