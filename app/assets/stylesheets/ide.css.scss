@@ -84,12 +84,23 @@ body {
   background-color: rgb(26, 25, 26);
   height: 97%;
 }
+.dark_black{
+  background-color: rgb(26, 25, 26);
+}
+.text_white{
+  color: white;
+}
+.light_black{
+  background-color:  rgb(34, 34, 34);
+}
 #logo {
   height: 50px;
 }
+.top_wrapper .fixed{
+  border-bottom: solid 1px #4288FF;
+}
 .logo1 {
   padding-right: 20px;
-  border-right: solid 1px #4288FF;
 }
 textarea {
   background-color: #222;
@@ -130,7 +141,7 @@ i {
 }
 
 .tab-title.active a{
-  border-right: solid 3px #4288FF;
+  border-left: solid 3px #4288FF;
 }
 
 #tabs_esya {
@@ -206,3 +217,12 @@ li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
 
 
 // aneesh inline css ends here
+
+.tabs dd > a,
+.tabs .tab-title > a {
+  padding: 0.3rem 2rem;
+}
+.tabs dd.active a, .tabs .tab-title.active a {
+  background-color: inherit;
+  color: inherit;
+}

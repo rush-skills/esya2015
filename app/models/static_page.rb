@@ -40,7 +40,7 @@ class StaticPage < ActiveRecord::Base
       field :description, :wysihtml5 do
           config_options toolbar: {
             fa: true,
-            image: false,
+            # image: false,
             link: false
           } # use font-awesome instead of glyphicon, disable images
         end

@@ -44,4 +44,8 @@
       // window.history.back();
       reloadPage();
     });
+    if($('.nav_entry').length < 1)
+    {
+      window.location.reload();
+    }
   });
