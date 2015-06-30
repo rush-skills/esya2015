@@ -1,7 +1,7 @@
 $(window).load(function() {
 	function pushElement(x){
 		//remove prefix when website is shifted to root domains
-		prefix = "/abcd";
+		prefix = "/abcc";
 
 		type = x.attr("data-page");
 		code = x.attr("data-code");

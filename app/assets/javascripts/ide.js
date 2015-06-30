@@ -22,6 +22,10 @@
 //= require ide/main
 // = require ide/pageContent
 
+    function resetPage(){
+      pushObject = $('li[data-page="page"][data-code="about"');
+      pushObject.click();
+    }
   $(window).load(function(){
     function reloadPage(){
       pageUrl = window.location.pathname.split('/');
@@ -36,7 +40,7 @@
         name = pageUrl[pageUrl.length-1];
         pushObject = $('li[data-page='+ type + '][data-code=' + name + ']');
         pushObject.click();
-        console.log(pushObject);
+        // console.log(pushObject);
       }
     }
     reloadPage();

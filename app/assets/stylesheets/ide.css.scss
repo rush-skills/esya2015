@@ -93,6 +93,9 @@ body {
 .light_black{
   background-color:  rgb(34, 34, 34);
 }
+.text_blue{
+  color: #4288FF !important;
+}
 #logo {
   height: 50px;
 }
@@ -140,7 +143,7 @@ i {
   margin-right: 5px;
 }
 
-.tab-title.active a{
+.tab-title.active a:first{
   border-left: solid 3px #4288FF;
 }
 
@@ -218,11 +221,16 @@ li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
 
 // aneesh inline css ends here
 
-.tabs dd > a,
 .tabs .tab-title > a {
+  padding: 0.3rem 0.5rem;
+}
+.tabs .tab-title > a:first {
   padding: 0.3rem 2rem;
 }
 .tabs dd.active a, .tabs .tab-title.active a {
   background-color: inherit;
-  color: inherit;
+  color: white;
+}
+.tabs dd > a, .tabs .tab-title > a{
+  display: inline-block;
 }
