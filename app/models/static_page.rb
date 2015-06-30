@@ -19,6 +19,10 @@ class StaticPage < ActiveRecord::Base
     self.name.to_s
   end
 
+  def short_code
+    self.name.squish.downcase.tr(" ","_")
+  end
+
   rails_admin do
     show do
       field :name

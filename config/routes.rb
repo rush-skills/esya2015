@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'landings#coming_soon'
-  get '/abcd' => 'landings#home'
+  get '/abcd/(:type/:value)' => 'landings#home'
   get '/coming_soon' => 'landings#index'
 
   get '/pcj' => redirect("https://docs.google.com/a/iiitd.ac.in/forms/d/1fCqlJgchtazO-ZPOM1TniR_k4OfSOTvABJ584xrQJo4/viewform")

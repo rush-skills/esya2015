@@ -135,7 +135,7 @@
     clear: both;
 }
 .terminal a {
-    color: #4288FF;
+    color: rgb(38, 249, 49);
 }
 .terminal a:hover {
     color: red;

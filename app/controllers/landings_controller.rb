@@ -3,6 +3,8 @@ class LandingsController < ApplicationController
   def index
   end
   def home
+    @type = params[:type]
+    @value = params[:value]
   end
   def mhome
   end

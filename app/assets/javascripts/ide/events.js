@@ -10,7 +10,7 @@ $.get(apiEndpoint, function(data) {
         category_selector = "#Non_tech_events";
     }
     // var entry_html = "<li class=\"file nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ entry.url +"\">" + entry.name + "</a></li>";
-		var entry_html = "<li class=\"file event_link\"><s class=\"fi-page\"></s> <a href=\""+ entry.url +"\">" + entry.name + "</a></li>";
+		var entry_html = "<li data-page=\"event\" data-code=\""+entry.short_code+"\" class=\"file event_link\"><s class=\"fi-page\"></s> <a href=\""+ entry.url +"\">" + entry.name + "</a></li>";
     // var entry_html='<li><label for="eventfolder'
     //               +entry.id+'"><s class="fi-folder"></s>'
     //               +entry.name+'</label> <input type="checkbox" id="eventfolder'

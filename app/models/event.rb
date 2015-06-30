@@ -42,6 +42,10 @@ class Event < ActiveRecord::Base
     self.name
   end
 
+  def short_code
+    self.name.squish.downcase.tr(" ","_")
+  end
+
   def info
     string = ""
     string += '<div class="image-center"><img height="250px" src="'+self.photo.url+'"></div>' if self.photo.present?
