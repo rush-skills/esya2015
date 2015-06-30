@@ -57,6 +57,11 @@ class Event < ActiveRecord::Base
   def combined
     string = info
     string += "<h1>Description</h1>" + self.description.to_s if self.description.present?
+    string += "<h1>Rules</h1>" + self.rules.to_s if self.rules.present?
+    string += "<h1>Judging</h1>" + self.judging.to_s if self.judging.present?
+    string += "<h1>Prizes</h1>" + self.prizes.to_s if self.prizes.present?
+    string += "<h1>Contact</h1>" + self.contact.to_s if self.contact.present?
+    string
   end
   rails_admin do
     show do

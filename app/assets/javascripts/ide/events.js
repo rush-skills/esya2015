@@ -9,17 +9,18 @@ $.get(apiEndpoint, function(data) {
     {
         category_selector = "#Non_tech_events";
     }
-		// var entry_html = "<li class=\"file nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ entry.url +"\">" + entry.name + "</a></li>";
-    var entry_html='<li><label for="eventfolder'
-                  +entry.id+'"><s class="fi-folder"></s>'
-                  +entry.name+'</label> <input type="checkbox" id="eventfolder'
-                  +entry.id+'" /><ol><li class="file event_link" data-field="info"><s class="fi-page"></s><a href="'
-                  + entry.url +'">Info</a></li><li class="file event_link" data-field="description"><s class="fi-page"></s> <a href="'
-                  + entry.url +'">Description</a></li><li class="file event_link" data-field="rules"><s class="fi-page"></s> <a href="'
-                  + entry.url +'">Rules</a></li><li class="file event_link" data-field="judging"><s class="fi-page"></s> <a href="'
-                  + entry.url +'">Judging</a></li><li class="file event_link" data-field="prizes"><s class="fi-page"></s> <a href="'
-                  + entry.url +'">Prizes</a></li><li class="file event_link" data-field="contact"><s class="fi-page"></s> <a href="'
-                  + entry.url +'">Contact</a></li></ol></li>'
+    // var entry_html = "<li class=\"file nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ entry.url +"\">" + entry.name + "</a></li>";
+		var entry_html = "<li class=\"file event_link\"><s class=\"fi-page\"></s> <a href=\""+ entry.url +"\">" + entry.name + "</a></li>";
+    // var entry_html='<li><label for="eventfolder'
+    //               +entry.id+'"><s class="fi-folder"></s>'
+    //               +entry.name+'</label> <input type="checkbox" id="eventfolder'
+    //               +entry.id+'" /><ol><li class="file event_link" data-field="combined"><s class="fi-page"></s><a href="'
+    //               + entry.url +'">Info</a></li><li class="file event_link" data-field="description"><s class="fi-page"></s> <a href="'
+    //               + entry.url +'">Description</a></li><li class="file event_link" data-field="rules"><s class="fi-page"></s> <a href="'
+    //               + entry.url +'">Rules</a></li><li class="file event_link" data-field="judging"><s class="fi-page"></s> <a href="'
+    //               + entry.url +'">Judging</a></li><li class="file event_link" data-field="prizes"><s class="fi-page"></s> <a href="'
+    //               + entry.url +'">Prizes</a></li><li class="file event_link" data-field="contact"><s class="fi-page"></s> <a href="'
+    //               + entry.url +'">Contact</a></li></ol></li>'
   	// console.log(entry);
 		$(category_selector).prepend(entry_html);
 	});
