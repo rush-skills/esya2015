@@ -7,6 +7,7 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  image       :string
 #
 
 class StaticPage < ActiveRecord::Base
@@ -14,6 +15,9 @@ class StaticPage < ActiveRecord::Base
 
   validates :name, presence: true
   validates :description, presence: true
+
+  mount_uploader :image, PhotoUploader
+  attr_accessor :image_cache, :remove_image
 
   def to_s
     self.name.to_s
@@ -23,9 +27,15 @@ class StaticPage < ActiveRecord::Base
     self.name.squish.downcase.tr(" ","_")
   end
 
+  def combined
+    string = ""
+    string += '<div class="image-center"><img height="250px" src="'+self.image.url+'"></div>' if self.image.present?
+    string += self.description.to_s
+  end
   rails_admin do
     show do
       field :name
+      field :image
       field :description do
         pretty_value do
           bindings[:object].description.html_safe
@@ -44,6 +54,7 @@ class StaticPage < ActiveRecord::Base
             link: false
           } # use font-awesome instead of glyphicon, disable images
         end
+      field :image
     end
   end
 end

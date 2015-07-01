@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords", :omniauth_callbacks => "users/omniauth_callbacks"}, skip: [:sessions, :registrations]
   scope 'm' do
     resources :static_pages
+    resources :sponsors
     resources :events
     resources :event_admins
     resources :participants
