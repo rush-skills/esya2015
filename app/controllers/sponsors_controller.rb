@@ -5,6 +5,14 @@ class SponsorsController < ApplicationController
   # GET /sponsors.json
   def index
     @sponsors = Sponsor.all
+    @response = ""
+    Sponsor.category.values.each do |x|
+      filter = @sponsors.where(category: x)
+      @response += "<h1>"+x+"</h1>" if filter.present?
+      filter.each do |spons|
+        @response += '<div class="spons-image"><img height="250px" src="'+spons.image.url+'"></div>' if spons.image.present?
+      end
+    end
   end
 
   # GET /sponsors/1

@@ -8,4 +8,7 @@ $.get(apiEndpoint, function(data) {
   	// console.log(entry);
 		$(".tree > li > ol").prepend(entry_html);
 	});
+  var entry_html = "<li data-page=\"page\" data-code=\"sponsors\" class=\"file  nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ "/m/sponsors.json" +"\">" + "Sponsors"+ "</a></li>";
+    // console.log(entry);
+  $(".tree > li > ol").prepend(entry_html);
 });
