@@ -131,3 +131,11 @@ li img {
 .wysiwyg-text-align-center{
   text-align: center;
 }
+.spons{
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  max-height: 250px;
+  display: inline-block;
+  vertical-align: top;
+}

@@ -8,9 +8,13 @@ class SponsorsController < ApplicationController
     @response = ""
     Sponsor.category.values.each do |x|
       filter = @sponsors.where(category: x)
-      @response += "<h1>"+x+"</h1>" if filter.present?
+      if filter.present?
+        @response += "<h1>"+x
+        @response += "s" if filter.count > 1
+        @response +="</h1>"
+      end
       filter.each do |spons|
-        @response += '<div class="spons-image"><img height="250px" src="'+spons.image.url+'"></div>' if spons.image.present?
+        @response += '<img class="spons" height="250px" src="'+spons.image.url+'">' if spons.image.present?
       end
     end
   end
