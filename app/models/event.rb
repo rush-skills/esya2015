@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
   end
 
   def short_code
-    self.name.squish.downcase.tr(" ","_")
+    self.name.squish.downcase.tr(" ","_").tr(".","_")
   end
 
   def info
