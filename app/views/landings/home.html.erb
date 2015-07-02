@@ -7,49 +7,68 @@
   </div>
 
   <div class="inner_ide" style="padding-top: 50px;background: white;height: 100%">
-    <div id="navigation" class="small-3 columns" style="padding-top: 30px;height: 100%;overflow: auto">
-      <ol class="tree">
-        <li>
-          <label for="folder1"><s class="fi-folder"></s> ESYA</label> <input type="checkbox" checked disabled id="folder1" />
-          <ol>
-            <li>
-              <label for="subfolder1"><s class="fi-folder"></s> Events</label> <input type="checkbox" id="subfolder1" />
-              <ol>
-                <li>
-                  <label for="subsubfolder1"><s class="fi-folder"></s> CSE</label> <input type="checkbox" id="subsubfolder1" />
-                  <ol id="CSE_events">
-                  </ol>
-                </li>
-                <li>
-                  <label for="subsubfolder2"><s class="fi-folder"></s> ECE</label> <input type="checkbox" id="subsubfolder2" />
-                  <ol id="ECE_events">
-                  </ol>
-                </li>
-                <li>
-                  <label for="subsubfolder3"><s class="fi-folder"></s> Flagship</label> <input type="checkbox" id="subsubfolder3" />
-                  <ol id="Flagship_events">
-                  </ol>
-                </li>
-                <li>
-                  <label for="subsubfolder4"><s class="fi-folder"></s> School</label> <input type="checkbox" id="subsubfolder4" />
-                  <ol id="School_events">
-                  </ol>
-                </li>
-                <li>
-                  <label for="subsubfolder5"><s class="fi-folder"></s> Workshop</label> <input type="checkbox" id="subsubfolder5" />
-                  <ol id="Workshop_events">
-                  </ol>
-                </li>
-                <li>
-                  <label for="subsubfolder6"><s class="fi-folder"></s> Non tech Events</label> <input type="checkbox" id="subsubfolder6" />
-                  <ol id="Non_tech_events">
-                  </ol>
-                </li>
-              </ol>
-            </li>
-          </ol>
-        </li>
-      </ol>
+    <div id="navigation" class="small-3 columns nomarpad" style="height: 100%">
+      <div class="small-1 columns nomarpad" id="ext_links">
+        <div class="side_link first_link tip-right has-tip" data-tooltip aria-haspopup="true" class="" title="IIIT Delhi Website">
+          <a href="http://iiitd.ac.in"><i class="fa fa-building"></i></a>
+        </div>
+        <div class="side_link mid_link tip-right has-tip" data-tooltip aria-haspopup="true" class="" title="Esya Blog">
+          <a href="http://esya.iiitd.edu.in/blog/"><i class="fa fa-pencil"></i></a>
+        </div>
+        <div class="side_link mid_link tip-right has-tip" data-tooltip aria-haspopup="true" class="" title="Esya@facebook">
+          <a href="https://www.facebook.com/EsyaIIITD"><i class="fa fa-facebook"></i></a>
+        </div>
+        <div class="side_link mid_link tip-right has-tip" data-tooltip aria-haspopup="true" class="" title="Esya@instagram">
+          <a href="https://instagram.com/esya_iiitd"><i class="fa fa-instagram"></i></a>
+        </div>
+        <div class="side_link last_link tip-right has-tip" data-tooltip aria-haspopup="true" class="" title="Esya@twitter">
+          <a href="https://twitter.com/EsyaIIITD"><i class="fa fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="small-11  columns nomarpad" style="overflow: auto;height: 100%">
+        <ol class="tree" style="padding: 20px 0px">
+          <li>
+            <label for="folder1"><s class="fi-folder"></s> ESYA</label> <input type="checkbox" checked disabled id="folder1" />
+            <ol>
+              <li>
+                <label for="subfolder1"><s class="fi-folder"></s> Events</label> <input type="checkbox" id="subfolder1" />
+                <ol>
+                  <li>
+                    <label for="subsubfolder1"><s class="fi-folder"></s> CSE</label> <input type="checkbox" id="subsubfolder1" />
+                    <ol id="CSE_events">
+                    </ol>
+                  </li>
+                  <li>
+                    <label for="subsubfolder2"><s class="fi-folder"></s> ECE</label> <input type="checkbox" id="subsubfolder2" />
+                    <ol id="ECE_events">
+                    </ol>
+                  </li>
+                  <li>
+                    <label for="subsubfolder3"><s class="fi-folder"></s> Flagship</label> <input type="checkbox" id="subsubfolder3" />
+                    <ol id="Flagship_events">
+                    </ol>
+                  </li>
+                  <li>
+                    <label for="subsubfolder4"><s class="fi-folder"></s> School</label> <input type="checkbox" id="subsubfolder4" />
+                    <ol id="School_events">
+                    </ol>
+                  </li>
+                  <li>
+                    <label for="subsubfolder5"><s class="fi-folder"></s> Workshop</label> <input type="checkbox" id="subsubfolder5" />
+                    <ol id="Workshop_events">
+                    </ol>
+                  </li>
+                  <li>
+                    <label for="subsubfolder6"><s class="fi-folder"></s> Non tech Events</label> <input type="checkbox" id="subsubfolder6" />
+                    <ol id="Non_tech_events">
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </div>
     </div>
 
     <div class="small-9 columns dark_black" style="height: 7%;" id="file_explorer">
@@ -70,7 +89,13 @@
     </div>
   </div>
 </div>
-<div class="small-12 columns" style="height: 25%;margin: 0;padding: 0">
+<div class="small-12 nomarpad columns dark_black" style="height: 3%">
+    <ul class="tabs dark_black" data-tab style="height: 100%;font-size: 13px">
+      <li class="console_tab nomarpad active light_black text_white" id="tabs_esya" style="height: 100%;"><a href="#" id="first_tab">Console</a></li>
+    </ul>
+</div>
+
+<div class="small-12 columns" style="height: 22%;margin: 0;padding: 0">
   <div id="commandLine" class="panel" style="margin-bottom: 0px">
   </div>
 </div>

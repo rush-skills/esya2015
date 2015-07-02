@@ -83,6 +83,7 @@ body {
 #navigation {
   background-color: rgb(26, 25, 26);
   height: 97%;
+  border-bottom: 3px solid black;
 }
 .dark_black{
   background-color: rgb(26, 25, 26);
@@ -233,4 +234,43 @@ li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
 }
 .tabs dd > a, .tabs .tab-title > a{
   display: inline-block;
+}
+.nomarpad{
+  margin: 0;
+  padding: 0;
+}
+#ext_links{
+  height: 100%;
+  vertical-align: middle;
+  padding: 15% 0;
+  overflow: hidden;
+}
+.side_link{
+  padding-top: 12px;
+  padding-left: 5px;
+  padding-bottom: 12px;
+  border-bottom: 0;
+}
+.first_link{
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+  border-top-right-radius: 12px;
+
+}
+.mid_link{
+  border-right: 1px solid white;
+}
+.last_link{
+    border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom-right-radius: 12px;
+}
+.console_tab
+{
+  text-align: center;
+  width: 100%;
+}
+.wysihtml5-sandbox{
+  padding:0 !important;
+  padding-left: 10px !important;
 }

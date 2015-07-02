@@ -6,9 +6,9 @@ $.get(apiEndpoint, function(data) {
 	data.forEach(function(entry) {
 		var entry_html = "<li data-page=\"page\" data-code=\""+entry.short_code+"\" class=\"file  nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ entry.url +"\">" + entry.name + "</a></li>";
   	// console.log(entry);
-		$(".tree > li > ol").prepend(entry_html);
+		$(".tree > li > ol").append(entry_html);
 	});
   var entry_html = "<li data-page=\"page\" data-code=\"sponsors\" class=\"file  nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ "/m/sponsors.json" +"\">" + "Sponsors"+ "</a></li>";
     // console.log(entry);
-  $(".tree > li > ol").prepend(entry_html);
+  $(".tree > li > ol").append(entry_html);
 });

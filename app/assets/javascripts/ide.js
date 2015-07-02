@@ -17,8 +17,8 @@
 //= require ide/vendor/modernizr
 //= require ide/terminal
 //= require ide/dist/wysihtml5-0.3.0
-//= require ide/staticPages
 //= require ide/events
+//= require ide/staticPages
 //= require ide/main
 // = require ide/pageContent
 
