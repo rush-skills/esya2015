@@ -140,7 +140,7 @@ function resetPage(){
 }
 function reloadPage(){
   pageUrl = window.location.pathname.split('/');
-  if(pageUrl.length<4)
+  if(pageUrl.length<3)
   {
     pushObject = $('li[data-page="page"][data-code="about"]');
     pushObject.click();
