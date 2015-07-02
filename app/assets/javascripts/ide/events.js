@@ -1,3 +1,5 @@
+$(document).on('ready',function(){
+
 var apiEndpoint = "/m/events.json";
 $.get(apiEndpoint, function(data) {
 	// ---- hardcoding for testing
@@ -26,4 +28,5 @@ $.get(apiEndpoint, function(data) {
       	// console.log(entry);
 		$(category_selector).prepend(entry_html);
 	});
+});
 });

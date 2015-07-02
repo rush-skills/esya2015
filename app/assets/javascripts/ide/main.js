@@ -1,18 +1,17 @@
-$(function(){
-  $(document).foundation();
-
-  editor = new wysihtml5.Editor("wysihtml5-editor", {
-    toolbar:     "wysihtml5-editor-toolbar",
-    stylesheets: ["/css/reset.css", "/css/editor.css"],
-    parserRules: wysihtml5ParserRules
-  });
-
-  editor.on("load", function() {
-    var composer = editor.composer;
-    composer.selection.selectNode(editor.composer.element.querySelector("h1"));
-  });
-
+$(document).on('ready',function(){
   jQuery(function($, undefined) {
+    $(document).foundation();
+
+    editor = new wysihtml5.Editor("wysihtml5-editor", {
+      toolbar:     "wysihtml5-editor-toolbar",
+      stylesheets: ["/css/reset.css", "/css/editor.css"],
+      parserRules: wysihtml5ParserRules
+    });
+
+    editor.on("load", function() {
+      var composer = editor.composer;
+      composer.selection.selectNode(editor.composer.element.querySelector("p"));
+    });
     root_directory = "~/esya15";
     current_directory = "~/esya15";
     $('#commandLine').terminal(function(command, term) {
@@ -113,18 +112,53 @@ $(function(){
     greetings: 'Welcome to ESYA\nType ? for help',
     name: 'js_demo',
     prompt: 'you@esya.iiitd.ac.in: '+current_directory+"> "});
+
+    function load(){
+      categories = ["CSE","ECE","Flagship","Non_tech","School","Workshop"];
+      events = [];
+      $('.event_link').each(function(){
+        events.push($(this).attr('data-code'));
+      });
+      pages = [];
+      $('.nav_entry').each(function(){
+        pages.push($(this).attr('data-code'));
+      });
+    }
+
+  
+
   });
 });
 
-
-function load(){
-  categories = ["CSE","ECE","Flagship","Non_tech","School","Workshop"];
-  events = [];
-  $('.event_link').each(function(){
-    events.push($(this).attr('data-code'));
-  });
-  pages = [];
-  $('.nav_entry').each(function(){
-    pages.push($(this).attr('data-code'));
-  });
+function resetPage(){
+  if($('.nav_entry').length < 1)
+  {
+    window.location.reload();
+  }
+  pushObject = $('li[data-page="page"][data-code="about"]');
+  pushObject.click();
 }
+function reloadPage(){
+  pageUrl = window.location.pathname.split('/');
+  if(pageUrl.length<4)
+  {
+    pushObject = $('li[data-page="page"][data-code="about"]');
+    pushObject.click();
+  }
+  else
+  {
+    type = pageUrl[pageUrl.length-2];
+    name = pageUrl[pageUrl.length-1];
+    pushObject = $('li[data-page='+ type + '][data-code=' + name + ']');
+    pushObject.click();
+    // console.log(pushObject);
+  }
+}
+window.onload = function(){
+  // window.history.back();
+  reloadPage();
+};
+window.onpopstate = function(){
+  // window.history.back();
+  reloadPage();
+};

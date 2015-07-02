@@ -1,3 +1,5 @@
+$(document).on('ready',function(){
+
 var apiEndpoint = "/m/static_pages.json";
 $.get(apiEndpoint, function(data) {
 	// ---- hardcoding for testing
@@ -11,4 +13,5 @@ $.get(apiEndpoint, function(data) {
   var entry_html = "<li data-page=\"page\" data-code=\"sponsors\" class=\"file  nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ "/m/sponsors.json" +"\">" + "Sponsors"+ "</a></li>";
     // console.log(entry);
   $(".tree > li > ol").append(entry_html);
+});
 });

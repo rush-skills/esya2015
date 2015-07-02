@@ -78,6 +78,7 @@
 }
 body {
   font-family:"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  background: rgb(34, 34, 34);
   // overflow: hidden;
 }
 #navigation {
@@ -273,4 +274,8 @@ li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
 .wysihtml5-sandbox{
   padding:0 !important;
   padding-left: 10px !important;
+  
+  background-color:  rgb(34, 34, 34) !important;
+  background:  rgb(34, 34, 34) !important;
+
 }

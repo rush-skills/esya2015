@@ -1,9 +1,12 @@
 html {
-  background: transparent;
+  background-color:  rgb(34, 34, 34) !important;
+  background:  rgb(34, 34, 34) !important;
 }
 
 body {
   margin-bottom: 25px;
+  background-color:  rgb(34, 34, 34) !important;
+  background:  rgb(34, 34, 34) !important;
   font-family: Helvetica, Arial, Verdana !important;
 }
 

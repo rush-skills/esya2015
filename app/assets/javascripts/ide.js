@@ -13,43 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require ide/parser_rules/advanced
 //= require ide/vendor/modernizr
-//= require ide/terminal
+//= require ide/parser_rules/advanced
 //= require ide/dist/wysihtml5-0.3.0
-//= require ide/events
-//= require ide/staticPages
+//= require ide/terminal
 //= require ide/main
-// = require ide/pageContent
+//= require ide/staticPages
+//= require ide/events
+//= require ide/pageContent
 
-    function resetPage(){
-      pushObject = $('li[data-page="page"][data-code="about"');
-      pushObject.click();
-    }
-  $(window).load(function(){
-    function reloadPage(){
-      pageUrl = window.location.pathname.split('/');
-      if(pageUrl.length<4)
-      {
-        pushObject = $('li[data-page="page"][data-code="about"');
-        pushObject.click();
-      }
-      else
-      {
-        type = pageUrl[pageUrl.length-2];
-        name = pageUrl[pageUrl.length-1];
-        pushObject = $('li[data-page='+ type + '][data-code=' + name + ']');
-        pushObject.click();
-        // console.log(pushObject);
-      }
-    }
-    reloadPage();
-    $(window).on('popstate',function(){
-      // window.history.back();
-      reloadPage();
-    });
-    if($('.nav_entry').length < 1)
-    {
-      window.location.reload();
-    }
-  });
+    
