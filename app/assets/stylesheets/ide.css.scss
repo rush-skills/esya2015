@@ -274,8 +274,100 @@ li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
 .wysihtml5-sandbox{
   padding:0 !important;
   padding-left: 10px !important;
-  
+  padding-top: 10px !important;
   background-color:  rgb(34, 34, 34) !important;
   background:  rgb(34, 34, 34) !important;
-
 }
+
+//LOADER CSS
+
+#loading{
+  background-color: #1a191a;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 10000;
+  margin-top: 0px;
+  top: 0px;
+}
+#loading-center{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#loading-center-absolute {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 400px;
+  width: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  text-align: center;
+}
+#object_one{
+  margin-left: 150px;
+}
+.object{
+  width: 20px;
+  height: 20px;
+  background-color: #FFF;
+  float: left;
+  margin-right: 20px;
+  margin-top: 65px;
+  -moz-border-radius: 50% 50% 50% 50%;
+  -webkit-border-radius: 50% 50% 50% 50%;
+  border-radius: 50% 50% 50% 50%;
+}
+
+#object_one {
+  -webkit-animation: object_one 1.5s infinite;
+  animation: object_one 1.5s infinite;
+  }
+#object_two {
+  -webkit-animation: object_two 1.5s infinite;
+  animation: object_two 1.5s infinite;
+  -webkit-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+  }
+#object_three {
+    -webkit-animation: object_three 1.5s infinite;
+  animation: object_three 1.5s infinite;
+  -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+
+@-webkit-keyframes object_one {
+75% { -webkit-transform: scale(0); }
+}
+
+@keyframes object_one {
+  75% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+}
+@-webkit-keyframes object_two {
+  75% { -webkit-transform: scale(0); }
+}
+
+@keyframes object_two {
+  75% {
+    transform: scale(0);
+    -webkit-transform:  scale(0);
+  }
+}
+
+@-webkit-keyframes object_three {
+  75% { -webkit-transform: scale(0); }
+}
+
+@keyframes object_three {
+  75% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+}
+
+
+
