@@ -17,13 +17,7 @@
         <td><%= static_page.name %></td>
         <td><%= static_page.description %></td>
         <td><%= link_to 'Show', static_page %></td>
-        <td><%= link_to 'Edit', edit_static_page_path(static_page) %></td>
-        <td><%= link_to 'Destroy', static_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Static page', new_static_page_path %>
