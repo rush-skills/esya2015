@@ -53,13 +53,13 @@ $(function(){
             new_directory = current_directory.split('/');
             new_directory.pop();
             current_directory = new_directory.join('/');
-            term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+">");
+            term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
           }
         }
         else if(current_directory.indexOf("events") > -1){
           if(categories.indexOf(folder) > -1){
             current_directory+="/"+folder;
-            term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+">");
+            term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
           }
           else{
             term.error("Folder not found!");
@@ -68,7 +68,7 @@ $(function(){
         else if(current_directory==root_directory){
           if(folder=="events"){
             current_directory += "/events";
-            term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+">");
+            term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
           }
           else{
             term.error("Folder not found!");
@@ -112,7 +112,7 @@ $(function(){
    }, {
     greetings: 'Welcome to ESYA\nType ? for help',
     name: 'js_demo',
-    prompt: 'you@esya.iiitd.ac.in: '+current_directory+">"});
+    prompt: 'you@esya.iiitd.ac.in: '+current_directory+"> "});
   });
 });
 
