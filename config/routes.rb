@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'landings#home'
-  get '/(:type/:value)' => 'landings#home', as: :ide
   get '/coming_soon' => 'landings#coming_soon'
 
   devise_scope :user do
@@ -31,4 +30,5 @@ Rails.application.routes.draw do
     get    "account" => "users/registrations#edit",   as: :edit_user_registration
   end
 
+  get '/(:type/:value)' => 'landings#home', as: :ide
 end
