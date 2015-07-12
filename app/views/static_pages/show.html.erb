@@ -1,13 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @static_page.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @static_page.description %>
-</p>
-
-<%= link_to 'Back', static_pages_path %>
+<section id="info_page" class="services bg-prime header">
+  <div class="container-fluid event-image-wrapper">
+    <div class="col-lg-10 col-lg-offset-1">
+    <%= image_tag @static_page.image, class: "event-header-mob" if @static_page.image.present?%>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white"><%=@static_page.name%></h2>
+        <hr class="small">
+        <div class="event-text">
+          <%= @static_page.description.html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
