@@ -6,11 +6,6 @@
         <hr class="small">
         <div class="row">
           <div class="col-md-4 col-sm-4 col-xs-6 tile">
-            <a href="#all_events">
-              All Events
-            </a>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-6 tile">
             <a href="#flagship_event">
               Flagship Events
             </a>
@@ -45,29 +40,17 @@
               Workshop Events
             </a>
           </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#all_events">
+              All Events
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="all_events" class="services bg-prime header">
-  <div class="container text-vertical-center">
-    <div class="row text-center">
-      <div class="col-lg-10 col-lg-offset-1">
-        <h2 style="color:white">All Events</h2>
-        <hr class="small">
-        <div class="row">
-          <% @events.each do |event| %>
-            <div class="col-md-4 col-sm-4 col-xs-6 tile">
-              <%= link_to event.to_s ,event_path(event) %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="flagship_event" class="services bg-prime header">
   <div class="container text-vertical-center">
@@ -185,6 +168,24 @@
         <hr class="small">
         <div class="row">
           <% @events.where(category: "Workshop").each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="all_events" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">All Events</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.each do |event| %>
             <div class="col-md-4 col-sm-4 col-xs-6 tile">
               <%= link_to event.to_s ,event_path(event) %>
             </div>
