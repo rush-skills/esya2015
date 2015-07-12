@@ -7,6 +7,7 @@ class LandingsController < ApplicationController
     @value = params[:value]
   end
   def mhome
+    @pages = StaticPage.all
   end
   def coming_soon
   end

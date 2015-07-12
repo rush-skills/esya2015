@@ -1,0 +1,81 @@
+<!-- Header -->
+<header id="top" class="header" style="padding-top:53px">
+    <div class="text-vertical-center">
+        <h1><img src="/img/logo.png" class="logo"></h1><br>
+        <h2 style="color:white">The Annual Technical Festival <br>21st August - 22nd August</h3><br>
+        <h1 style="color:white; font-weight:100">Going Opensource</h1>
+        <br>
+        <a href="#event" class="btn btn-dark btn-lg" style="font-size:40px">V</a><!--Replace this with down arrow-->
+    </div>
+</header>
+
+<section id="event" class="services bg-prime header">
+    <div class="container text-vertical-center">
+        <div class="row text-center">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2 style="color:white">Esya 2015</h2>
+                <hr class="small">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-6 tile">
+                        <%= link_to "Events", events_path %>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6 tile">
+                        <%= link_to "Sponsors", sponsors_path %>
+                    </div>
+                    <% @pages.each do |page| %>
+                        <div class="col-md-4 col-sm-4 col-xs-6 tile">
+                            <%= link_to page.to_s, static_page_path(page) %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="bg-prime header">
+    <div class="container text-vertical-center">
+        <div class="row text-center">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <h2 style="color:white">Contact Us</h2>
+                <hr class="large" style="; margin-bottom:50px">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-10 col-xs-push-1 col-sm-push-0">
+                            <div class="form-group">
+                            <input type="text" class="form-control dark-input text-field" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-10 col-xs-push-1 col-sm-push-0">
+                            <div class="form-group">
+                            <input type="text" class="form-control dark-input text-field" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-10 col-xs-push-1 col-sm-push-0">
+                            <div class="form-group">
+                            <input type="text" class="form-control dark-input text-field" placeholder="Phone No.">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-10 col-xs-push-1 col-sm-push-0">
+                            <div class="form-group">
+                            <input type="text" class="form-control dark-input text-field" placeholder="Subject">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-10 col-xs-push-1 col-sm-push-0">
+                            <div class="form-group">
+                            <textarea class="form-control dark-input" placeholder="Message" style="resize:none; height:100px; border-radius:0px"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:50px;">
+                        <div class="col-md-12 col-sm-12 col-xs-10 col-xs-push-1 col-sm-push-0">
+                            <input type="submit" class="btn btn-lg btn-submit" style="width:100%" placeholder="SUBMIT">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,51 +1,65 @@
-<%- model_class = Event -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => Event %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:category) %></th>
-      <th><%= model_class.human_attribute_name(:rules) %></th>
-      <th><%= model_class.human_attribute_name(:judging) %></th>
-      <th><%= model_class.human_attribute_name(:event_date_time) %></th>
-      <th><%= model_class.human_attribute_name(:team_size) %></th>
-      <th><%= model_class.human_attribute_name(:venue) %></th>
-      <th><%= model_class.human_attribute_name(:eligibilty) %></th>
-      <th><%= model_class.human_attribute_name(:registration_deadline) %></th>
-      <th><%= model_class.human_attribute_name(:prizes) %></th>
-      <th><%= model_class.human_attribute_name(:contact) %></th>
-      <th><%= model_class.human_attribute_name(:photo) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.id %></td>
-        <td><%= event.name %></td>
-        <td><%= event.category %></td>
-        <td><%= event.rules %></td>
-        <td><%= event.judging %></td>
-        <td><%= event.event_date_time %></td>
-        <td><%= event.team_size %></td>
-        <td><%= event.venue %></td>
-        <td><%= event.eligibilty %></td>
-        <td><%= event.registration_deadline %></td>
-        <td><%= event.prizes %></td>
-        <td><%= event.contact %></td>
-        <td><%= event.photo %></td>
-        <td><%=l event.created_at, format: :long %></td>
-        <td>
-          <%= link_to event_path(event), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<section id="event" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">Esya 2015</h2>
+        <hr class="small">
+        <div class="row">
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#all_events">
+              All Events
+            </a>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#flagship_event">
+              Flagship Events
+            </a>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#cse_event">
+              CSE Events
+            </a>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#ece_event">
+              ECE Events
+            </a>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#non_tech_event">
+              Non Tech Events
+            </a>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#school_event" style="color:white">
+              School Events
+            </a>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#workshop_event" style="color:white">
+              Workshop Events
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="all_events" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">All Events</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

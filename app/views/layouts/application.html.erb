@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Esya2015Backend</title>
+  <title>Esya 2015</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <%= csrf_meta_tags %>
-<!-- Prelang: Analytics / Google Analytics -->
+  <!-- Prelang: Analytics / Google Analytics -->
     <%= analytics_init if Rails.env.production? or Rails.env.development? %>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/></head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
 <body>
+
 <%= render partial: "elements/navbar" %>
 <%= bootstrap_flash %>
-
-
 <%= yield %>
+<%= render partial: "elements/footer" %>
 
 </body>
 </html>
