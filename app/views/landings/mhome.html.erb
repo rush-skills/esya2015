@@ -22,7 +22,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-6 tile">
                         <%= link_to "Sponsors", sponsors_path %>
                     </div>
-                    <% @pages.each do |page| %>
+                    <% @pages.where("name is not 'About'").each do |page| %>
                         <div class="col-md-4 col-sm-4 col-xs-6 tile">
                             <%= link_to page.to_s, static_page_path(page) %>
                         </div>
