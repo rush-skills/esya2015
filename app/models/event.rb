@@ -67,6 +67,22 @@ class Event < ActiveRecord::Base
     string += "<h1>Contact</h1>" + self.contact.to_s if self.contact.present?
     string
   end
+  def mob_combined
+
+    string = ""
+    string +='<h2 align="center"><b>Team size limit:</b> '+self.team_size.to_s+' people'
+    string +='&nbsp&nbsp|&nbsp&nbsp<b>Eligibility:</b> '+self.eligibilty.to_s if self.eligibilty.present?
+    string += '&nbsp&nbsp|&nbsp&nbsp<b>Time:</b> '+self.event_date_time.strftime("%D %r") if self.event_date_time.present?
+    string += '<br><b>Registration Deadline:</b> '+self.registration_deadline.strftime("%D %r") if self.registration_deadline.present?
+    string += '&nbsp&nbsp|&nbsp&nbsp<b>Venue:</b> '+self.venue.to_s if self.venue.present?
+    string += '</h2>'
+    string += "<h1>Description</h1>" + self.description.to_s if self.description.present?
+    string += "<h1>Rules</h1>" + self.rules.to_s if self.rules.present?
+    string += "<h1>Judging</h1>" + self.judging.to_s if self.judging.present?
+    string += "<h1>Prizes</h1>" + self.prizes.to_s if self.prizes.present?
+    string += "<h1>Contact</h1>" + self.contact.to_s if self.contact.present?
+    string
+  end
   rails_admin do
     show do
       field :name

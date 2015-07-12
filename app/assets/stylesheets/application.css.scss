@@ -300,3 +300,72 @@ footer {
     width: 100%;
     max-height: 250px;
 }
+.event-header-mob{
+    width: 100%;
+    max-height: 250px;
+}
+.event-image-wrapper{
+    text-align: center;
+    padding-top: 50px;
+}
+.navbar-toggle .icon-bar{
+    background-color:white;
+}
+.event-text{
+    color: white;
+    text-align: justify;
+    h1, h2 {
+      line-height: 1;
+      font-family: Rockwell, "Courier New", Courier, Georgia;
+      border-bottom: 1px solid #999;
+      margin: 0 5px 25px 0;
+      padding: 0 0 8px;
+    }
+
+    h1 {
+      font-size: 27px;
+      color: #4288FF;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    p, li {
+      line-height: 1.5;
+    }
+
+    p, ul, ol {
+      padding-bottom: 25px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    strong, b {
+      font-weight: bold;
+    }
+
+    i, em {
+      font-style: italic;
+    }
+
+    li {
+      margin-left: 30px;
+    }
+
+    ul li {
+      list-style: disc outside;
+    }
+
+    ol li {
+      list-style: decimal outside;
+    }
+
+    li img {
+      vertical-align: middle;
+      margin: 2px 5px 5px 0;
+    }
+
+}

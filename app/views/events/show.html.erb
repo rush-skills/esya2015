@@ -1,39 +1,18 @@
-<%- model_class = Event -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => Event %></h1>
-</div>
-
-<div class="fieldset">
-  <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @event.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:category) %></dt>
-      <dd><pre class="prettyprint"><%= @event.category %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:rules) %></dt>
-      <dd><pre class="prettyprint"><%= @event.rules %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:judging) %></dt>
-      <dd><pre class="prettyprint"><%= @event.judging %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:event_date_time) %></dt>
-      <dd><pre class="prettyprint"><%= @event.event_date_time %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:team_size) %></dt>
-      <dd><pre class="prettyprint"><%= @event.team_size %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:venue) %></dt>
-      <dd><pre class="prettyprint"><%= @event.venue %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:eligibilty) %></dt>
-      <dd><pre class="prettyprint"><%= @event.eligibilty %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:registration_deadline) %></dt>
-      <dd><pre class="prettyprint"><%= @event.registration_deadline %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:prizes) %></dt>
-      <dd><pre class="prettyprint"><%= @event.prizes %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:contact) %></dt>
-      <dd><pre class="prettyprint"><%= @event.contact %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:photo) %></dt>
-      <dd><pre class="prettyprint"><%= @event.photo %></pre></dd>
-  </dl>
-</div>
-
-<div class="form-group">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              events_path, :class => 'btn btn-default'  %>
-</div>
-
+<section id="event" class="services bg-prime header">
+  <div class="container-fluid event-image-wrapper">
+    <div class="col-lg-10 col-lg-offset-1">
+      <%= image_tag @event.photo, class: "event-header-mob" if @event.photo.present?%>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white"><%= @event.name.to_s + " | " + @event.category.to_s%></h2>
+        <hr class="small">
+        <div class="event-text">
+          <%= @event.mob_combined.html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
