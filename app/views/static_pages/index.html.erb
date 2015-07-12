@@ -1,23 +1,18 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Static Pages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @static_pages.each do |static_page| %>
-      <tr>
-        <td><%= static_page.name %></td>
-        <td><%= static_page.description %></td>
-        <td><%= link_to 'Show', static_page %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<section id="static_page_index" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">Esya 2015 | Info Pages</h2>
+        <hr class="small">
+        <div class="row">
+          <% @static_pages.each do |page| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to page.to_s ,static_page_path(page) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

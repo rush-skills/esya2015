@@ -1,23 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Sponsors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Image</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sponsors.each do |sponsor| %>
-      <tr>
-        <td><%= sponsor.name %></td>
-        <td><%= sponsor.category %></td>
-        <td><%= sponsor.image %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% Sponsor.category.values.each do |type| %>
+  <% if @sponsors.where(category: type).count > 0 %>
+    <section id="#{type}_sponsor" class="services bg-prime header">
+      <div class="container text-vertical-center">
+        <div class="row text-center">
+          <div class="col-lg-10 col-lg-offset-1">
+            <h2 style="color:white"><%= type %></h2>
+            <hr class="small">
+            <div class="row">
+              <% @sponsors.where(category: type).each do |sponsor| %>
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                  <%= image_tag sponsor.image , class: "spons-mob-image" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <% end %>
+<% end %>
