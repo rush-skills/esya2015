@@ -6,7 +6,7 @@
         <h2 style="color:white">Esya 2015 | Info Pages</h2>
         <hr class="small">
         <div class="row">
-          <% @static_pages.each do |page| %>
+          <% @static_pages.where("name != ?",'About').each do |page| %>
             <div class="col-md-4 col-sm-4 col-xs-6 tile">
               <%= link_to page.to_s ,static_page_path(page) %>
             </div>
