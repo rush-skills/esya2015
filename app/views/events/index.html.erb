@@ -16,6 +16,11 @@
             </a>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-6 tile">
+            <a href="#techathlon_event" style="color:white">
+              Techathlon Events
+            </a>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 tile">
             <a href="#cse_event">
               CSE Events
             </a>
@@ -54,6 +59,132 @@
         <hr class="small">
         <div class="row">
           <% @events.each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flagship_event" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">Flagship Events</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.where(category: "Flagship").each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="techathlon_event" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">Techathlon Events</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.where(category: "Techathlon").each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cse_event" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">CSE Events</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.where(category: "CSE").each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ece_event" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">ECE Events</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.where(category: "ECE").each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="non_tech_event" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">Non Tech Events</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.where(category: "Non Tech").each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="school_event" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">School Events</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.where(category: "School").each do |event| %>
+            <div class="col-md-4 col-sm-4 col-xs-6 tile">
+              <%= link_to event.to_s ,event_path(event) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="workshop_event" class="services bg-prime header">
+  <div class="container text-vertical-center">
+    <div class="row text-center">
+      <div class="col-lg-10 col-lg-offset-1">
+        <h2 style="color:white">Workshops</h2>
+        <hr class="small">
+        <div class="row">
+          <% @events.where(category: "Workshop").each do |event| %>
             <div class="col-md-4 col-sm-4 col-xs-6 tile">
               <%= link_to event.to_s ,event_path(event) %>
             </div>

@@ -114,7 +114,7 @@ $(document).on('ready',function(){
     prompt: 'you@esya.iiitd.ac.in: '+current_directory+"> "});
 
     function load(){
-      categories = ["CSE","ECE","Flagship","Non_tech","School","Workshop"];
+      categories = ["Techathlon","CSE","ECE","Flagship","Non_tech","School","Workshop"];
       events = [];
       $('.event_link').each(function(){
         events.push($(this).attr('data-code'));
@@ -124,8 +124,6 @@ $(document).on('ready',function(){
         pages.push($(this).attr('data-code'));
       });
     }
-
-  
 
   });
 });

@@ -36,7 +36,7 @@ class Event < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   attr_accessor :photo_cache, :remove_photo
   extend Enumerize
-  enumerize :category, in: ["CSE","ECE","Flagship","Non Tech","School","Workshop"]
+  enumerize :category, in: ["Techathlon","CSE","ECE","Flagship","Non Tech","School","Workshop"]
 
   def to_s
     self.name
