@@ -48,7 +48,7 @@ group :development do
 end
 
 gem 'google-analytics-rails'
-gem 'devise', github: 'plataformatec/devise'
+# gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
 gem "omniauth-google-oauth2"
 gem 'binding_of_caller'

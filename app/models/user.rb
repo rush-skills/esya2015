@@ -29,9 +29,6 @@
 class User < ActiveRecord::Base
   has_paper_trail
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable:registerable,
-  devise  :trackable, :omniauthable, :omniauth_providers => [:google_oauth2]
   has_many :event_admins
   has_many :events, through: :event_admins
 
@@ -49,9 +46,9 @@ class User < ActiveRecord::Base
     if auth.info.email.split("@").last == "iiitd.ac.in"
       where("provider = ? AND uid = ? OR email = ?", auth.provider, auth.uid, auth.info.email).first_or_create do |user|
         user.email = auth.info.email
-        # user.password = Devise.friendly_token[0,20]
         user.name = auth.info.name   # assuming the user model has a name
-        # user.image = auth.info.image # assuming the user model has an image
+        user.uid = auth.uid
+        user.provider = auth.provider
       end
     else
       Rails.logger.warn "Non IIITD access from "+ auth.info.email.to_s
@@ -65,11 +62,6 @@ class User < ActiveRecord::Base
       field :email
       field :role
       field :events
-      field :sign_in_count
-      field :last_sign_in_at
-      field :last_sign_in_ip
-      field :current_sign_in_at
-      field :current_sign_in_ip
     end
     list do
       field :name
@@ -80,8 +72,6 @@ class User < ActiveRecord::Base
       field :name
       field :email
       field :role
-      # field :password
-      # field :password_confirmation
       field :events
     end
   end

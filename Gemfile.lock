@@ -1,16 +1,4 @@
 GIT
-  remote: git://github.com/plataformatec/devise.git
-  revision: 181920886e4e60783f330b94072b0423345f714f
-  specs:
-    devise (3.5.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      responders
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
-
-GIT
   remote: git://github.com/twbs/bootstrap-sass.git
   revision: ffe92a9cf3fc7ebb9eba9697e2770195f2e777a7
   specs:
@@ -63,7 +51,6 @@ GEM
     autoprefixer-rails (5.2.1)
       execjs
       json
-    bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -162,7 +149,6 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    orm_adapter (0.5.0)
     paper_trail (3.0.8)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
@@ -223,8 +209,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
     remotipart (1.2.1)
-    responders (2.1.0)
-      railties (>= 4.2.0, < 5)
     safe_yaml (1.0.4)
     sanitize (4.0.0)
       crass (~> 1.0.2)
@@ -264,8 +248,6 @@ GEM
       json (>= 1.8.0)
     validates_formatting_of (0.9.0)
       activemodel
-    warden (1.2.3)
-      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -281,7 +263,6 @@ DEPENDENCIES
   cancancan
   carrierwave
   coffee-rails (~> 4.0.0)
-  devise!
   dotenv-rails
   enumerize
   foundation-icons-sass-rails
