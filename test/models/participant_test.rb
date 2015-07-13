@@ -9,6 +9,8 @@
 #  college    :string
 #  created_at :datetime
 #  updated_at :datetime
+#  uid        :string
+#  provider   :string
 #
 
 require 'test_helper'

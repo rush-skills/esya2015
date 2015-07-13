@@ -4,8 +4,16 @@ class SessionsController < ApplicationController
     if params[:type].present?
       if params[:type].downcase == "user"
         redirect_to '/auth/'+params[:provider] + "/?user=1"
+      else
+        new_participant
       end
+    else
+      new_participant
     end
+  end
+
+  def new_participant
+    redirect_to "/auth/" + params[:provider]
   end
 
   def create
@@ -22,12 +30,17 @@ class SessionsController < ApplicationController
         redirect_to root_url
       end
     else
+      participant = Participant.from_omniauth(auth)
+      if participant
+        reset_session
+        session[:participant_id] = participant.id
+      end
+      redirect_to root_url
       #replace the below for participant login
       # user = User.where(:provider => auth['provider'],
       #                   :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
       # reset_session
       # session[:user_id] = user.id
-      redirect_to root_url, :notice => 'Signed in!'
     end
   end
 

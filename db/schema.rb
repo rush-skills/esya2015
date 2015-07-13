@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713133719) do
+ActiveRecord::Schema.define(version: 20150713135824) do
 
   create_table "event_admins", force: :cascade do |t|
     t.integer  "event_id"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20150713133719) do
     t.string   "college"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uid"
+    t.string   "provider"
   end
 
   create_table "registrations", force: :cascade do |t|

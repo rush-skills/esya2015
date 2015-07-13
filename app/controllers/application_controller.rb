@@ -11,9 +11,19 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :correct_user?
 
+  helper_method :current_participant
+  helper_method :participant_signed_in?
+
   def current_user
     begin
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue Exception => e
+      nil
+    end
+  end
+  def current_participant
+    begin
+      @current_participant ||= Participant.find(session[:participant_id]) if session[:participant_id]
     rescue Exception => e
       nil
     end
@@ -30,6 +40,11 @@ class ApplicationController < ActionController::Base
     def user_signed_in?
       return true if current_user
     end
+
+    def participant_signed_in?
+      return true if current_participant
+    end
+
 
     def correct_user?
       @user = User.find(params[:id])
