@@ -42,6 +42,14 @@ class Event < ActiveRecord::Base
     self.name
   end
 
+  def team_event?
+    self.team_size > 1
+  end
+
+  def registered?(participant)
+    Registration.where(participant: participant, event: self).first.present?
+  end
+
   def short_code
     self.name.squish.downcase.tr(" ","_").tr(".","_")
   end

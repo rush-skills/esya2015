@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_participant
   helper_method :participant_signed_in?
 
+  helper_method :registered?
+
+  def registered?(event)
+    event.registered?(current_participant)
+  end
+
   def current_user
     begin
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -55,25 +61,23 @@ class ApplicationController < ActionController::Base
 
     def authenticate_user!
       if !current_user
-        redirect_to root_url, :alert => 'You need to sign in for access to this page.'
+        redirect_to fallback_redirect
       end
     end
 
-    #-> Prelang (user_login:devise)
-    def require_user_signed_in
-      unless user_signed_in?
+    def authenticate_participant!
+      if !current_participant
+        redirect_to fallback_redirect
+      end
+    end
 
-        # If the user came from a page, we can send them back.  Otherwise, send
-        # them to the root path.
-        if request.env['HTTP_REFERER']
-          fallback_redirect = :back
-        elsif defined?(root_path)
-          fallback_redirect = root_path
-        else
-          fallback_redirect = "/"
-        end
-
-        redirect_to fallback_redirect, flash: {error: "You must be signed in to view this page."}
+    def fallback_redirect
+      if request.env['HTTP_REFERER']
+        fallback_redirect = :back
+      elsif defined?(root_path)
+        fallback_redirect = root_path
+      else
+        fallback_redirect = "/"
       end
     end
 

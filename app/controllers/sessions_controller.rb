@@ -16,6 +16,10 @@ class SessionsController < ApplicationController
     redirect_to "/auth/" + params[:provider]
   end
 
+  def get_current_participant
+    render json: current_participant
+  end
+
   def create
     auth = request.env["omniauth.auth"]
     params = request.env["omniauth.params"]
@@ -35,7 +39,7 @@ class SessionsController < ApplicationController
         reset_session
         session[:participant_id] = participant.id
       end
-      redirect_to root_url
+      redirect_to fallback_redirect
       #replace the below for participant login
       # user = User.where(:provider => auth['provider'],
       #                   :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)

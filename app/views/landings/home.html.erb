@@ -10,7 +10,7 @@
 </div>
 
 
-<div class="top_wrapper" style="height: 75%">
+<div class="top_wrapper" id="top_part" style="height: 75%">
   <div class="fixed">
     <div class="large-12 columns dark_black" style="text-align: center">
       <img id="logo" class="logo1" style="float: left;" src="/img/e151.png"/>
@@ -89,19 +89,19 @@
       </div>
     </div>
 
-    <div class="small-9 columns dark_black" style="height: 7%;" id="file_explorer">
+    <div class="small-9 columns dark_black" id="file_tabs" style="min-height: 7%;" id="file_explorer">
       <ul class="tabs dark_black" data-tab>
-        <li class="tab-title active light_black text_white" id="tabs_esya"><a href="#" id="first_tab">Esya.html</a><a class="text_blue" href="<%= ide_url %>" onclick="resetPage()">x</a></li>
+        <li class="tab-title active light_black text_white" id="tabs_esya"><a class="border-left-blue" href="#" id="first_tab">Esya.html</a><a class="text_blue" href="<%= ide_url %>" onclick="resetPage()">x</a></li>
         <% if participant_signed_in? %>
-        <li class="border-left-blue tab-title right light_black text_white" style="width: 150px;margin:0;margin-left: 15px;">
+        <li id="login" data-logged-in="1" class="border-left-blue tab-title right light_black text_white" style="width: 150px;margin:0;margin-left: 15px;">
         <a data-dropdown="drop2" aria-controls="drop1" aria-expanded="false" class="light_black text_white"><%= current_participant.name %></a>
         <ul id="drop2" class="light_black text_white f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-          <li><a href="#" class="text_white hover_black">Profile</a></li>
+          <li><a href="#" id="profile" class="text_white hover_black">Profile</a></li>
           <li><a href="/signout" class="text_white hover_black">Log out</a></li>
         </ul>
         </li>
         <% else %>
-        <li class="border-left-blue tab-title right light_black text_white" style="width: 100px;margin:0;margin-left: 15px;">
+        <li id="login" data-logged-in="0" class="border-left-blue tab-title right light_black text_white" style="width: 100px;margin:0;margin-left: 15px;">
         <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="light_black text_white">Login</a>
         <ul id="drop1" class="light_black text_white f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
           <li><a href="/signin/google_oauth2" class="text_white hover_black">Google</a></li>
@@ -110,12 +110,12 @@
         </li>
         <% end %>
         <li class="border-left-blue tab-title right light_black text_white" style="margin:0">
-          <a href="#" class="light_black text_white">Register</a>
+          <a href="#" data-registered="" data-event-id="" data-event-name="" id="register" class="light_black text_white" style="display: none">Register</a>
         </li>
       </ul>
     </div>
 
-    <div class="small-9 columns" style="height: 93%; margin:0; padding:0;">
+    <div class="small-9 columns" id="editor_area" style="height: 93%; margin:0; padding:0;">
       <div style="height: 100%;" id="editorWrapper" class="nano">
         <div class="nano-content">
           <textarea style="height: 100%;  margin:0; padding: 20px; border: solid 3px black;" class="wysiwyg-color-white" id="wysihtml5-editor" spellcheck="false" wrap="off" autofocus placeholder="<h1>Hey!</h1> <p>We're yet to add content to this page</p>">
@@ -133,7 +133,7 @@
   </ul>
 </div>
 
-<div class="small-12 columns" style="height: 22%;margin: 0;padding: 0">
+<div class="small-12 columns" id="term_part" style="height: 22%;margin: 0;padding: 0">
   <div id="commandLine" class="panel" style="margin-bottom: 0px">
   </div>
 </div>

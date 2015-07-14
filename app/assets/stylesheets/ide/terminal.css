@@ -80,7 +80,7 @@
 }
 .terminal .terminal-output div div, .cmd .prompt {
     display: block;
-    line-height: 14px;
+    line-height: 18px;
     height: auto;
 }
 .cmd .prompt {

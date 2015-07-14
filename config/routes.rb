@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
 
+  get '/current_participant' => 'sessions#get_current_participant'
+  get '/register/:id' => "registrations#create"
+  get '/check_registration/:id' => "registrations#check"
+
   get '/(:type/:value)' => 'landings#home', as: :ide
   # You can have the root of your site routed with "root"
   root 'landings#home'
