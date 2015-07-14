@@ -380,3 +380,9 @@ li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
 .border-left-blue{
   border-left: solid 3px #4288FF;
 }
+.site_heading{
+  margin:0;
+  padding:0;
+  text-align: center;
+  line-height: 2.7;
+}
