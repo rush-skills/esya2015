@@ -82,18 +82,21 @@ body {
   // overflow: hidden;
 }
 #navigation {
-  background-color: rgb(26, 25, 26);
+  background-color: rgb(26, 25, 26) !important;
   height: 97%;
   border-bottom: 3px solid black;
 }
 .dark_black{
-  background-color: rgb(26, 25, 26);
+  background-color: rgb(26, 25, 26) !important;
 }
 .text_white{
-  color: white;
+  color: white !important;
+}
+.hover_black:hover{
+  color: #222 !important;
 }
 .light_black{
-  background-color:  rgb(34, 34, 34);
+  background-color:  rgb(34, 34, 34) !important;
 }
 .text_blue{
   color: #4288FF !important;
@@ -369,5 +372,11 @@ li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
   }
 }
 
+.lrmar20{
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
-
+.border-left-blue{
+  border-left: solid 3px #4288FF;
+}

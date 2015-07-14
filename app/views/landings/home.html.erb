@@ -91,6 +91,26 @@
     <div class="small-9 columns dark_black" style="height: 7%;" id="file_explorer">
       <ul class="tabs dark_black" data-tab>
         <li class="tab-title active light_black text_white" id="tabs_esya"><a href="#" id="first_tab">Esya.html</a><a class="text_blue" href="<%= ide_url %>" onclick="resetPage()">x</a></li>
+        <% if participant_signed_in? %>
+        <li class="border-left-blue tab-title right light_black text_white" style="width: 150px;margin:0;margin-left: 15px;">
+        <a data-dropdown="drop2" aria-controls="drop1" aria-expanded="false" class="light_black text_white"><%= current_participant.name %></a>
+        <ul id="drop2" class="light_black text_white f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+          <li><a href="#" class="text_white hover_black">Profile</a></li>
+          <li><a href="/signout" class="text_white hover_black">Log out</a></li>
+        </ul>
+        </li>
+        <% else %>
+        <li class="border-left-blue tab-title right light_black text_white" style="width: 100px;margin:0;margin-left: 15px;">
+        <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="light_black text_white">Login</a>
+        <ul id="drop1" class="light_black text_white f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+          <li><a href="/signin/google_oauth2" class="text_white hover_black">Google</a></li>
+          <li><a href="/signin/facebook" class="text_white hover_black">Facebook</a></li>
+        </ul>
+        </li>
+        <% end %>
+        <li class="border-left-blue tab-title right light_black text_white" style="margin:0">
+          <a href="#" class="light_black text_white">Register</a>
+        </li>
       </ul>
     </div>
 
