@@ -138,6 +138,106 @@ $(document).on('ready',function(){
           term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
           state = 0;
         }
+
+      }
+
+      //Profile commands
+      else if(state == 2){
+        name_prompt = "[[;red;black]Name: ]";
+        email_prompt = "[[;red;black]Email: ]";
+        college_prompt = "[[;red;black]College: ]";
+        phone_prompt = "[[;red;black]Phone: ]";
+        data =  $.ajax({
+            type: "GET",
+            url: "/m/profile.json",
+            cache: false,
+            async: false
+        }).responseJSON;
+        name = data["name"];
+        if(name == null){
+          name = "";
+        }
+        email = data["email"];
+        if(email == null)
+        {
+          email = "";
+        }
+        college = data["college"];
+        if(college == null)
+        {
+          college = "";
+        }
+        phone = data["phone"];
+        if(phone == null){
+          phone = "";
+        }
+        if(command != ""){
+          if(term.get_prompt() == name_prompt)
+          {
+            name = command;
+            term.echo("New name = "+name);
+            $.ajax({
+                url: "/m/profile/update.json",
+                type: "POST",
+                data: {"participant": {
+                         "name": name}},
+                success: function(resp){
+                }
+            });
+            $('#login a').first().html(name);
+            term.set_prompt(email_prompt);
+            term.set_command(email);
+          }
+          else if(term.get_prompt() == email_prompt)
+          {
+            email = command;
+            term.echo("New email = "+email);
+            $.ajax({
+                url: "/m/profile/update.json",
+                type: "POST",
+                data: {"participant": {
+                         "email": email}},
+                success: function(resp){
+                }
+            });
+            term.set_prompt(college_prompt);
+            term.set_command(college);
+          }
+          else if(term.get_prompt() == college_prompt)
+          {
+            college = command;
+            term.echo("New college = "+college);
+            $.ajax({
+                url: "/m/profile/update.json",
+                type: "POST",
+                data: {"participant": {
+                         "college": college}},
+                success: function(resp){
+                }
+            });
+            term.set_prompt(phone_prompt);
+            term.set_command(phone);
+          }
+          else if(term.get_prompt() == phone_prompt)
+          {
+            phone = command;
+            term.echo("New phone = "+phone);
+            $.ajax({
+                url: "/m/profile/update.json",
+                type: "POST",
+                data: {"participant": {
+                         "phone": phone}},
+                success: function(resp){
+                }
+            });
+            // term.set_prompt(phone_prompt);
+            // term.set_command(phone);
+
+            unFocusTerminal();
+            term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
+            state = 0;
+          }
+        }
       }
     },
     {
@@ -184,6 +284,18 @@ $(document).on('ready',function(){
         termi.echo("Alredy Registered for the event");
       }
     });
+
+    profile = $('#profile');
+    profile.click(function(e){
+      e.preventDefault();
+      focusTerminal();
+      termi.clear();
+      termi.echo("[[;green;black]Here are the details of your profile we have, you can edit them if you like.]");
+      state = 2;
+      name_prompt = "[[;red;black]Name: ]";
+      termi.set_prompt(name_prompt);
+      termi.set_command($('#login a').first().html());
+    })
     function focusTerminal(){
       $("#top_part").css("height","50%");
       $("#term_part").css("height","47%");

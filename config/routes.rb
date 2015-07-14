@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :sponsors, only: [:index]
     resources :events, only: [:index,:show]
     get '/profile' => 'participants#profile'
+    post '/profile/update' => "participants#update"
     get "/" => 'landings#mhome'
   end
   # The priority is based upon order of creation: first created -> highest priority.
