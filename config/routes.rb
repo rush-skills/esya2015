@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :static_pages, only: [:index,:show]
     resources :sponsors, only: [:index]
     resources :events, only: [:index,:show]
-    get '/register/:id' => "registrations#create"
+    get '/register/:id(/:team_code)' => "registrations#create"
+    get '/register/:id(/team/:team_name)' => "registrations#create"
     get '/check_registration/:id' => "registrations#check"
     get '/profile' => 'participants#profile'
     post '/profile/update' => "participants#update"

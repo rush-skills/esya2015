@@ -114,10 +114,45 @@ $(document).on('ready',function(){
       else if(state == 1){
         if(command == "Y" || command == "y")
         {
+          team_event = $("#register").attr("data-team-event");
+          if(team_event == "true"){
+            term.set_prompt("[[;red;black]If you are joining another team, enter team code, else leave blank: ]");
+            state = 3;
+          }
+          else
+          {
+            term.echo("Registering...");
+            event_id = $("#register").attr("data-event-id");
+            $.get("/m/register/"+event_id+".json", function(data) {
+              term.echo(data["data"]);
+              if(data["data"] == "Success")
+              {
+                $('#register').html("Registered");
+                $('#register').attr("data-registered","1");
+              }
+              unFocusTerminal();
+              term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
+              state = 0;
+            });
+          }
+        }
+        else{
+          term.echo("Cancelling...");
+          unFocusTerminal();
+          term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
+          state = 0;
+        }
+
+      }
+
+      //Team registration commands
+      else if (state == 3){
+        if(command!=''){
           term.echo("Registering...");
           event_id = $("#register").attr("data-event-id");
-          $.get("/m/register/"+event_id+".json", function(data) {
+          $.get("/m/register/"+event_id+"/" +command + ".json", function(data) {
             term.echo(data["data"]);
+            term.echo("[[;green;black]" + data["extra_data"] +"]");
             if(data["data"] == "Success")
             {
               $('#register').html("Registered");
@@ -129,14 +164,29 @@ $(document).on('ready',function(){
           });
         }
         else{
-          term.echo("Cancelling...");
-          unFocusTerminal();
-          term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
-          state = 0;
+          term.set_prompt("[[;red;black]Please enter your TEAM NAME, can't be blank: ]");
+          state = 4;
         }
-
       }
-
+      else if(state == 4){
+        if(command!='')
+        {
+          term.echo("Registering...");
+          event_id = $("#register").attr("data-event-id");
+          $.get("/m/register/"+event_id+"/team/" +command +".json", function(data) {
+            term.echo(data["data"]);
+            term.echo("[[;green;black]" + data["extra_data"] +"]");
+            if(data["data"] == "Success")
+            {
+              $('#register').html("Registered");
+              $('#register').attr("data-registered","1");
+            }
+            unFocusTerminal();
+            term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
+            state = 0;
+          });
+        }
+      }
       //Profile commands
       else if(state == 2){
         name_prompt = "[[;red;black]Name: ]";

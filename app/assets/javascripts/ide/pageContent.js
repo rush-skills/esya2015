@@ -40,8 +40,12 @@ $(document).on('ready',function(){
 			$('#register').attr("data-event-id",data["id"]);
 			$('#register').attr("data-event-name",data["name"]);
 			$('#register').attr("data-registered",data["registered"]);
+			$('#register').attr("data-team-event",data["team_event"]);
 			if(data["registered"] == "1"){
 				$('#register').html("Registered");
+			}
+			else{
+				$('#register').html("Register");
 			}
 		});
 	});

@@ -24,8 +24,20 @@ class Team < ActiveRecord::Base
   validates :team_name, presence: true
   validates :event, presence: true
 
+  before_create :generate_tid
+
   def to_s
     self.team_name.to_s + " - " + self.event.to_s
+  end
+
+  def generate_tid
+    random = SecureRandom.hex 2
+    if Team.find_by_tid(random)
+      generate_tid
+    else
+      self.tid ||= random
+    end
+    random
   end
 
   rails_admin do
