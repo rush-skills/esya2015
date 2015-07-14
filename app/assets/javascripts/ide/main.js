@@ -22,11 +22,7 @@ $(document).on('ready',function(){
       {
         if(command == 'ls'){
           if(current_directory==root_directory){
-            // term.echo([pages.join(' ')],{color: "lightskyblue"});
             term.echo("[[;#4288FF;black]events] [[;#4288FF;black]] [[;white;black]"+pages.join('] [[;white;black]') + "]" );
-
-            // [[guib;<COLOR>;<BACKGROUND>]some text]
-            // term.echo([categories.join(' ')],{color: "red"})
           }
           else if(current_directory.split('/').length==3){
             term.echo("[[;#4288FF;black]"+categories.join('] [[;#4288FF;black]')+"]" );
@@ -120,7 +116,7 @@ $(document).on('ready',function(){
         {
           term.echo("Registering...");
           event_id = $("#register").attr("data-event-id");
-          $.get("/register/"+event_id+".json", function(data) {
+          $.get("/m/register/"+event_id+".json", function(data) {
             term.echo(data["data"]);
             if(data["data"] == "Success")
             {
@@ -230,8 +226,6 @@ $(document).on('ready',function(){
                 success: function(resp){
                 }
             });
-            // term.set_prompt(phone_prompt);
-            // term.set_command(phone);
 
             unFocusTerminal();
             term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :static_pages, only: [:index,:show]
     resources :sponsors, only: [:index]
     resources :events, only: [:index,:show]
+    get '/register/:id' => "registrations#create"
+    get '/check_registration/:id' => "registrations#check"
     get '/profile' => 'participants#profile'
     post '/profile/update' => "participants#update"
     get "/" => 'landings#mhome'
@@ -24,8 +26,6 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
 
-  get '/register/:id' => "registrations#create"
-  get '/check_registration/:id' => "registrations#check"
 
   get '/(:type/:value)' => 'landings#home', as: :ide
   # You can have the root of your site routed with "root"
