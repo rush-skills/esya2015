@@ -51,6 +51,7 @@ gem 'google-analytics-rails'
 # gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
 gem "omniauth-google-oauth2"
+gem 'omniauth-facebook'
 gem 'binding_of_caller'
 gem 'simple_form'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'

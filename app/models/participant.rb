@@ -22,7 +22,7 @@ class Participant < ActiveRecord::Base
   has_many :events, through: :registrations
 
   validates :name, presence: true
-  validates :email, presence: true
+  # validates :email, presence: true
   # validates :phone, presence: true
   # validates :college, presence: true
 
@@ -32,7 +32,7 @@ class Participant < ActiveRecord::Base
 
 
   def self.from_omniauth(auth)
-    where("provider = ? AND uid = ? OR email = ?", auth.provider, auth.uid, auth.info.email).first_or_create do |participant|
+    where("provider = ? AND uid = ? OR email = ?", auth.provider, auth.uid, auth.info.email).first_or_create! do |participant|
       participant.email = auth.info.email
       participant.name = auth.info.name
       participant.uid = auth.uid
