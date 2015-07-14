@@ -9,6 +9,8 @@
 #  college    :string
 #  created_at :datetime
 #  updated_at :datetime
+#  uid        :string
+#  provider   :string
 #
 
 class Participant < ActiveRecord::Base
@@ -20,12 +22,25 @@ class Participant < ActiveRecord::Base
   has_many :events, through: :registrations
 
   validates :name, presence: true
-  validates :email, presence: true
-  validates :phone, presence: true
-  validates :college, presence: true
+  # validates :email, presence: true
+  # validates :phone, presence: true
+  # validates :college, presence: true
 
   def to_s
     self.name
+  end
+
+  def profile_complete?
+    self.name.present? and self.phone.present? and self.college.present?
+  end
+
+  def self.from_omniauth(auth)
+    where("provider = ? AND uid = ? OR email = ?", auth.provider, auth.uid, auth.info.email).first_or_create! do |participant|
+      participant.email = auth.info.email
+      participant.name = auth.info.name
+      participant.uid = auth.uid
+      participant.provider = auth.provider
+    end
   end
 
   rails_admin do

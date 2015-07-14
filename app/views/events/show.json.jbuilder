@@ -7,3 +7,13 @@ json.rules raw @event.rules
 json.judging raw @event.judging
 json.prizes raw @event.prizes
 json.contact raw @event.contact
+if current_participant
+  if @event.registered? current_participant
+    json.registered "1"
+  else
+    json.registered "0"
+  end
+else
+  json.registered "0"
+end
+json.team_event @event.team_event?

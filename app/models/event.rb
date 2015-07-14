@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
   has_many :users, through: :event_admins
   has_many :registrations
   has_many :teams
-
+  has_many :participants, through: :teams
   validates :name, presence: true
   validates :category, presence: true
   validates :team_size, presence: true
@@ -40,6 +40,14 @@ class Event < ActiveRecord::Base
 
   def to_s
     self.name
+  end
+
+  def team_event?
+    self.team_size > 1
+  end
+
+  def registered?(participant)
+    Registration.where(participant: participant, event: self).first.present? or self.participants.where(id: participant.id).first.present?
   end
 
   def short_code
