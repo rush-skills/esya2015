@@ -30,6 +30,9 @@ class Participant < ActiveRecord::Base
     self.name
   end
 
+  def profile_complete?
+    self.name.present? and self.phone.present? and self.college.present?
+  end
 
   def self.from_omniauth(auth)
     where("provider = ? AND uid = ? OR email = ?", auth.provider, auth.uid, auth.info.email).first_or_create! do |participant|

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :static_pages, only: [:index,:show]
     resources :sponsors, only: [:index]
     resources :events, only: [:index,:show]
+    get '/profile' => 'participants#profile'
     get "/" => 'landings#mhome'
   end
   # The priority is based upon order of creation: first created -> highest priority.
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
 
-  get '/current_participant' => 'sessions#get_current_participant'
   get '/register/:id' => "registrations#create"
   get '/check_registration/:id' => "registrations#check"
 

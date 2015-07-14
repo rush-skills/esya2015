@@ -16,3 +16,4 @@ if current_participant
 else
   json.registered "0"
 end
+json.team_event @event.team_event?
