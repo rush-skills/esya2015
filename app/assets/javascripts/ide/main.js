@@ -316,39 +316,44 @@ $(document).on('ready',function(){
     reg = $("#register");
     reg.click(function(e){
       e.preventDefault();
-      if(reg.attr("data-registered")=="0")
-      {
-        termi.clear();
-        // login = $('#login').attr('data-logged-in');
-        $.get("/m/profile.json", function(data) {
-          login = data["login"];
-          if(login)
-          {
-            focusTerminal();
-            complete = data["complete"];
-            if(complete)
+      if(reg.attr("data-event-name")=="Procon Jr."){
+         window.open('http://esya.iiitd.edu.in/pcj','_blank');
+      }
+      else{
+        if(reg.attr("data-registered")=="0")
+        {
+          termi.clear();
+          // login = $('#login').attr('data-logged-in');
+          $.get("/m/profile.json", function(data) {
+            login = data["login"];
+            if(login)
             {
-              termi.echo("[[;red;black]Are you sure you want to register for the event:] [[;green;black]"+reg.attr('data-event-name')+"]");
-              termi.set_prompt('Enter Y to confirm, any other key to cancel: ');
-              state=1;
+              focusTerminal();
+              complete = data["complete"];
+              if(complete)
+              {
+                termi.echo("[[;red;black]Are you sure you want to register for the event:] [[;green;black]"+reg.attr('data-event-name')+"]");
+                termi.set_prompt('Enter Y to confirm, any other key to cancel: ');
+                state=1;
+              }
+              else
+              {
+                state=-1;
+                $("#profile").click();
+              }
             }
             else
             {
-              state=-1;
-              $("#profile").click();
+              termi.echo("[[;red;black]You need to login to continue]");
+              $('#login a').first().click();
             }
+          });
+        }
+        else{
+          termi.echo("[[;red;black]Alredy Registered for the event!]");
+          if(reg.attr("data-team-event")=="true"){
+            termi.echo("[[;green;black] Your current team size is "+reg.attr("data-team-size")+". Your team code is: "+reg.attr("data-team-id")+". Use this code to add other team members.]")
           }
-          else
-          {
-            termi.echo("[[;red;black]You need to login to continue]");
-            $('#login a').first().click();
-          }
-        });
-      }
-      else{
-        termi.echo("[[;red;black]Alredy Registered for the event!]");
-        if(reg.attr("data-team-event")=="true"){
-          termi.echo("[[;green;black] Your current team size is "+reg.attr("data-team-size")+". Your team code is: "+reg.attr("data-team-id")+". Use this code to add other team members.]")
         }
       }
     });
