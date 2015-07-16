@@ -182,8 +182,8 @@ $(document).on('ready',function(){
             {
               $('#register').html("Registered");
               $('#register').attr("data-registered","1");
-              $('#register').attr("data-team-size",data["team_code"]);
-              $('#register').attr("data-team-id",data["team_size"]);
+              $('#register').attr("data-team-size",data["team_size"]);
+              $('#register').attr("data-team-id",data["team_code"]);
             }
             unFocusTerminal();
             term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
