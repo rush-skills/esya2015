@@ -376,14 +376,6 @@ $(document).on('ready',function(){
     }
 
 
-  function resetPage(){
-    if($('.nav_entry').length < 1)
-    {
-      window.location.reload();
-    }
-    pushObject = $('li[data-page="page"][data-code="about"]');
-    pushObject.click();
-  }
   function reloadPage(){
     pageUrl = window.location.pathname.split('/');
     if(pageUrl.length<3)
@@ -394,7 +386,7 @@ $(document).on('ready',function(){
     else
     {
       type = pageUrl[pageUrl.length-2];
-      name = pageUrl[pageUrl.length-1];
+      name = pageUrl[pageUrl.length-1].split("#")[0];
       pushObject = $('li[data-page='+ type + '][data-code=' + name + ']');
       pushObject.click();
       // console.log(pushObject);
@@ -410,3 +402,11 @@ $(document).on('ready',function(){
   };
   });
 });
+function resetPage(){
+  if($('.nav_entry').length < 1)
+  {
+    window.location.reload();
+  }
+  pushObject = $('li[data-page="page"][data-code="about"]');
+  pushObject.click();
+}
