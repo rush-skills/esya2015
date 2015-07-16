@@ -30,6 +30,10 @@ class Team < ActiveRecord::Base
     self.team_name.to_s + " - " + self.event.to_s
   end
 
+  def name
+    self.team_name.to_s
+  end
+
   def generate_tid
     random = SecureRandom.hex 2
     if Team.find_by_tid(random)
