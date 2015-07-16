@@ -319,12 +319,12 @@ $(document).on('ready',function(){
       if(reg.attr("data-registered")=="0")
       {
         termi.clear();
-        focusTerminal();
         // login = $('#login').attr('data-logged-in');
         $.get("/m/profile.json", function(data) {
           login = data["login"];
           if(login)
           {
+            focusTerminal();
             complete = data["complete"];
             if(complete)
             {
@@ -341,7 +341,6 @@ $(document).on('ready',function(){
           else
           {
             termi.echo("[[;red;black]You need to login to continue]");
-            unFocusTerminal();
             $('#login a').first().click();
           }
         });
