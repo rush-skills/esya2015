@@ -26,7 +26,7 @@ class Event < ActiveRecord::Base
   has_many :event_admins
   has_many :users, through: :event_admins
   has_many :registrations
-  has_many :teams
+  has_many :teams, dependent: :destroy
   has_many :participants, through: :teams
   validates :name, presence: true
   validates :category, presence: true

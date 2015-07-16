@@ -16,8 +16,8 @@
 class Participant < ActiveRecord::Base
   has_paper_trail
 
-  has_many :participant_teams
-  has_many :registrations
+  has_many :participant_teams, dependent: :destroy
+  has_many :registrations, dependent: :destroy
 
   has_many :events, through: :registrations
 
@@ -31,7 +31,7 @@ class Participant < ActiveRecord::Base
   end
 
   def profile_complete?
-    self.name.present? and self.phone.present? and self.college.present?
+    self.email.present? and self.phone.present? and self.college.present? and self.name.present?
   end
 
   def self.from_omniauth(auth)

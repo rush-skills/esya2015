@@ -236,16 +236,23 @@ $(document).on('ready',function(){
           }
           else if(term.get_prompt() == email_prompt)
           {
-            email = command;
-            term.echo("New email = "+email);
-            $.ajax({
-                url: "/m/profile/update.json",
-                type: "POST",
-                data: {"participant": {
-                         "email": email}},
-                success: function(resp){
-                }
-            });
+            if(email == "")
+            {
+              email = command;
+              term.echo("New email = "+email);
+              $.ajax({
+                  url: "/m/profile/update.json",
+                  type: "POST",
+                  data: {"participant": {
+                           "email": email}},
+                  success: function(resp){
+                  }
+              });
+            }
+            else
+            {
+              term.echo("[[;red;black;]Email cannot be changed!]");
+            }
             term.set_prompt(college_prompt);
             term.set_command(college);
           }
@@ -305,24 +312,35 @@ $(document).on('ready',function(){
     reg = $("#register");
     reg.click(function(e){
       e.preventDefault();
-      // alert('clicked');
       if(reg.attr("data-registered")=="0")
       {
         termi.clear();
         focusTerminal();
-        login = $('#login').attr('data-logged-in');
-        if(login == '1')
-        {
-          termi.echo("[[;red;black]Are you sure you want to register for the event:] [[;green;black]"+reg.attr('data-event-name')+"]");
-          termi.set_prompt('Enter Y to confirm, any other key to cancel: ');
-          state=1;
-        }
-        else
-        {
-          termi.echo("[[;red;black]You need to login to continue]");
-          unFocusTerminal();
-          $('#login a').first().click();
-        }
+        // login = $('#login').attr('data-logged-in');
+        $.get("/m/profile.json", function(data) {
+          login = data["login"];
+          if(login)
+          {
+            complete = data["complete"];
+            if(complete)
+            {
+              termi.echo("[[;red;black]Are you sure you want to register for the event:] [[;green;black]"+reg.attr('data-event-name')+"]");
+              termi.set_prompt('Enter Y to confirm, any other key to cancel: ');
+              state=1;
+            }
+            else
+            {
+              state=-1;
+              $("#profile").click();
+            }
+          }
+          else
+          {
+            termi.echo("[[;red;black]You need to login to continue]");
+            unFocusTerminal();
+            $('#login a').first().click();
+          }
+        });
       }
       else{
         termi.echo("Alredy Registered for the event");
@@ -334,12 +352,16 @@ $(document).on('ready',function(){
       e.preventDefault();
       focusTerminal();
       termi.clear();
+      if(state == -1)
+      {
+        termi.echo("[[;red;black]You need to complete your profile before registering]");
+      }
       termi.echo("[[;green;black]Here are the details of your profile we have, you can edit them if you like.]");
       state = 2;
       name_prompt = "[[;red;black]Name: ]";
       termi.set_prompt(name_prompt);
       termi.set_command($('#login a').first().html());
-    })
+    });
     function focusTerminal(){
       $("#top_part").css("height","50%");
       $("#term_part").css("height","47%");

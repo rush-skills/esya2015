@@ -18,7 +18,7 @@ class Team < ActiveRecord::Base
   has_paper_trail
 
   belongs_to :event
-  has_many :participant_teams
+  has_many :participant_teams, dependent: :destroy
   has_many :participants, through: :participant_teams
 
   validates :team_name, presence: true

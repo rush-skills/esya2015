@@ -1,10 +1,17 @@
 class ParticipantsController < ApplicationController
-  before_filter :authenticate_participant!
+  before_filter :authenticate_participant!, except: [:profile]
   def profile
     @participant = current_participant
-    respond_to do |format|
-      format.html
-      format.json
+    if current_participant
+      respond_to do |format|
+        format.html
+        format.json
+      end
+    else
+      respond_to do |format|
+        format.html{ redirect_to fallback_redirect}
+        format.json{ render json: {data: "Not logged in",login: false}}
+      end
     end
   end
   def update
