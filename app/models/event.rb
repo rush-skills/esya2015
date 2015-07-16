@@ -50,6 +50,10 @@ class Event < ActiveRecord::Base
     Registration.where(participant: participant, event: self).first.present? or self.participants.where(id: participant.id).first.present?
   end
 
+  def get_team participant
+    self.participants.where(id: participant.id).get_team(self)
+  end
+
   def short_code
     self.name.squish.downcase.tr(" ","_").tr(".","_")
   end

@@ -20,6 +20,7 @@ class Participant < ActiveRecord::Base
   has_many :registrations, dependent: :destroy
 
   has_many :events, through: :registrations
+  has_many :teams, through: :participant_teams
 
   validates :name, presence: true
   # validates :email, presence: true
@@ -28,6 +29,10 @@ class Participant < ActiveRecord::Base
 
   def to_s
     self.name
+  end
+
+  def get_team event
+    self.teams.where(event: event).first
   end
 
   def profile_complete?

@@ -343,7 +343,10 @@ $(document).on('ready',function(){
         });
       }
       else{
-        termi.echo("Alredy Registered for the event");
+        termi.echo("[[;red;black]Alredy Registered for the event!]");
+        if(reg.attr("data-team-event")=="true"){
+          termi.echo("[[;green;black] Your team code is: "+reg.attr("data-team-id")+".Use this code to add other team members.]")
+        }
       }
     });
 

@@ -10,10 +10,13 @@ json.contact raw @event.contact
 if current_participant
   if @event.registered? current_participant
     json.registered "1"
+    json.team_id current_participant.get_team(@event).tid
   else
     json.registered "0"
+    json.team_id "0"
   end
 else
   json.registered "0"
+  json.team_id "0"
 end
 json.team_event @event.team_event?
