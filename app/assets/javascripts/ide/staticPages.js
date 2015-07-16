@@ -13,5 +13,8 @@ $.get(apiEndpoint, function(data) {
   var entry_html = "<li data-page=\"page\" data-code=\"sponsors\" class=\"file  nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ "/m/sponsors.json" +"\">" + "Sponsors"+ "</a></li>";
     // console.log(entry);
   $(".tree > li > ol").append(entry_html);
+  var entry_html = "<li data-page=\"page\" data-code=\"team\" class=\"file  nav_entry\"><s class=\"fi-page\"></s> <a href=\""+ "/m/organizers.json" +"\">" + "Team"+ "</a></li>";
+    // console.log(entry);
+  $(".tree > li > ol").append(entry_html);
 });
 });

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/hackiiitd' => redirect("/hackiiitd/")
 
   scope 'm' do
+    resources :organizers, only: [:index]
     resources :static_pages, only: [:index,:show]
     resources :sponsors, only: [:index]
     resources :events, only: [:index,:show]
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     post '/profile/update' => "participants#update"
     get "/" => 'landings#mhome'
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

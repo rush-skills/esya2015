@@ -143,3 +143,11 @@ li img {
   vertical-align: top;
   padding: 10px;
 }
+.team{
+  /*width: 100%;*/
+  /*max-width: 250px;*/
+  max-height: 300px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+}
