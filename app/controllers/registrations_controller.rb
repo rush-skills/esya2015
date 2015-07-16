@@ -42,7 +42,7 @@ class RegistrationsController < ApplicationController
                 team_code = "You have "+@team.participants.count.to_s + " team members. Add more team members by using team code: " + @team.tid.to_s
                 respond_to do |format|
                   format.html{redirect_to fallback_redirect}
-                  format.json{render json: {data: "Sucess", extra_data: team_code}}
+                  format.json{render json: {data: "Success", extra_data: team_code}}
                 end
               else
                 respond_to do |format|
