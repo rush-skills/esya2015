@@ -42,6 +42,7 @@ $(document).on('ready',function(){
 			$('#register').attr("data-registered",data["registered"]);
 			$('#register').attr("data-team-event",data["team_event"]);
 			$('#register').attr("data-team-id",data["team_id"]);
+			$('#register').attr("data-team-size",data["current_team_size"]);
 
 			if(data["registered"] == "1"){
 				$('#register').html("Registered");

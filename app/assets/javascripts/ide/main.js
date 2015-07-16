@@ -157,6 +157,8 @@ $(document).on('ready',function(){
             {
               $('#register').html("Registered");
               $('#register').attr("data-registered","1");
+              $('#register').attr("data-team-size",data["team_code"]);
+              $('#register').attr("data-team-id",data["team_size"]);
             }
             unFocusTerminal();
             term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
@@ -180,6 +182,8 @@ $(document).on('ready',function(){
             {
               $('#register').html("Registered");
               $('#register').attr("data-registered","1");
+              $('#register').attr("data-team-size",data["team_code"]);
+              $('#register').attr("data-team-id",data["team_size"]);
             }
             unFocusTerminal();
             term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
@@ -345,7 +349,7 @@ $(document).on('ready',function(){
       else{
         termi.echo("[[;red;black]Alredy Registered for the event!]");
         if(reg.attr("data-team-event")=="true"){
-          termi.echo("[[;green;black] Your team code is: "+reg.attr("data-team-id")+".Use this code to add other team members.]")
+          termi.echo("[[;green;black] Your current team size is "+reg.attr("data-team-size")+". Your team code is: "+reg.attr("data-team-id")+". Use this code to add other team members.]")
         }
       }
     });
