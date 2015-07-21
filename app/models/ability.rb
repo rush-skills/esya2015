@@ -30,6 +30,8 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     # can :read, :all                   # allow everyone to read everything
+    alias_action :create, :read, :update, :history, :to => :cruh
+
     if user# && user.admin?
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
@@ -37,12 +39,17 @@ class Ability
       if user.role.super_admin?
         can :manage, :all             # allow superadmins to do anything
         can :history, :all
+        cannot :show_in_app, :all
       elsif user.role.admin?
         can :manage, :all
         can :history, :all
         cannot :delete, [Participant,ParticipantTeam,Registration,Team]
+        cannot :show_in_app, :all
       elsif user.role.event_head?
-        # can :manage, Event, object if object.user
+        can :read, [Participant,Registration,Team,ParticipantTeam]
+        can [:history,:update], Event do |object|
+          object.is_admin(user)
+        end
       elsif user.role.pr?
         can :manage, [StaticPage,Sponsor]
       else

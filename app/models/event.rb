@@ -57,6 +57,10 @@ class Event < ActiveRecord::Base
     self.name.squish.downcase.tr(" ","_").tr(".","_")
   end
 
+  def is_admin user
+    self.event_admins.where(user: user).first.present?
+  end
+
   def info
     string = ""
     string += '<div class="image-center"><img height="250px" src="'+self.photo.url+'"></div>' if self.photo.present?
