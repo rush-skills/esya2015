@@ -316,7 +316,7 @@ $(document).on('ready',function(){
     reg = $("#register");
     reg.click(function(e){
       e.preventDefault();
-      if(reg.attr("data-event-name")=="Procon Jr."){
+      if(reg.attr("data-event-name")=="Procon Jr"){
          window.open('http://esya.iiitd.edu.in/pcj','_blank');
       }
       else{
@@ -333,7 +333,7 @@ $(document).on('ready',function(){
               if(complete)
               {
                 termi.echo("[[;red;black]Are you sure you want to register for the event:] [[;green;black]"+reg.attr('data-event-name')+"]");
-                termi.set_prompt('Enter Y to confirm, any other key to cancel: ');
+                termi.set_prompt('Type Y to confirm, any other key to cancel, and press enter: ');
                 state=1;
               }
               else
@@ -378,6 +378,7 @@ $(document).on('ready',function(){
       $("#term_part").css("height","47%");
       $('#file_tabs').css("height","10%");
       $("#editor_area").css("height","90%");
+      $(".cmd").click();
     }
     function unFocusTerminal(){
       $("#top_part").css("height","75%");
