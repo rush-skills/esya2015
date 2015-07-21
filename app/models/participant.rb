@@ -55,7 +55,7 @@ class Participant < ActiveRecord::Base
       field :phone
       field :college
       field :events
-      field :participant_teams
+      field :teams
     end
     list do
       field :name
@@ -69,7 +69,7 @@ class Participant < ActiveRecord::Base
       field :phone
       field :college
       field :events
-      field :participant_teams
+      field :teams
     end
   end
 end

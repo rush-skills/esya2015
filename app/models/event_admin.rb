@@ -27,6 +27,10 @@ class EventAdmin < ActiveRecord::Base
     self.event.to_s + " - " + self.user.to_s
   end
 
+  def name
+    self.to_s
+  end
+
   rails_admin do
     show do
       field :event

@@ -15,14 +15,6 @@ class Organizer < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   attr_accessor :photo_cache, :remove_photo
 
-  def to_s
-    self.name.to_s
-  end
-
-  def short_code
-    self.name.squish.downcase.tr(" ","_")
-  end
-
   rails_admin do
     show do
       field :photo

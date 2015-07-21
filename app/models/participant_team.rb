@@ -24,6 +24,10 @@ class ParticipantTeam < ActiveRecord::Base
     self.team.to_s + " - " + self.participant.to_s
   end
 
+  def name
+    self.to_s
+  end
+
   rails_admin do
     show do
       field :team

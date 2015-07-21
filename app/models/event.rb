@@ -130,6 +130,8 @@ class Event < ActiveRecord::Base
         end
       end
       field :photo
+      field :registrations
+      field :teams
     end
     list do
       field :name
