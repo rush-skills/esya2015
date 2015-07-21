@@ -15,9 +15,6 @@ class Organizer < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   attr_accessor :photo_cache, :remove_photo
 
-  # extend Enumerize
-  # enumerize :category, in: ["Title Sponsor","Associate Sponsor","Category Sponsor","Event Partner","Partner","Media Partner","Food and Beverages Partner","Hackathon Partner","Workshop Partner"]
-
   def to_s
     self.name.to_s
   end

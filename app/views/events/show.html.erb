@@ -7,7 +7,7 @@
   <div class="container-fluid">
     <div class="row text-center">
       <div class="col-lg-10 col-lg-offset-1">
-        <h2 style="color:white"><%= @event.name.to_s + " | " + @event.category.to_s%></h2>
+        <h2 style="color:white"><%= @event.name.to_s + " | " + @event.categories.to_s%></h2>
         <hr class="small">
         <div class="event-text">
           <%= @event.mob_combined.html_safe %>

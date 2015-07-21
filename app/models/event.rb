@@ -4,7 +4,6 @@
 #
 #  id                    :integer          not null, primary key
 #  name                  :string
-#  category              :string
 #  rules                 :text
 #  judging               :text
 #  event_date_time       :datetime
@@ -28,15 +27,15 @@ class Event < ActiveRecord::Base
   has_many :registrations
   has_many :teams, dependent: :destroy
   has_many :participants, through: :teams
+  has_and_belongs_to_many :categories
+
   validates :name, presence: true
-  validates :category, presence: true
   validates :team_size, presence: true
   validates :team_size, numericality: { only_integer: true, :less_than_or_equal_to => 6, :greater_than_or_equal_to => 1 }
 
   mount_uploader :photo, PhotoUploader
   attr_accessor :photo_cache, :remove_photo
   extend Enumerize
-  enumerize :category, in: ["Techathlon","CSE","ECE","Flagship","Non Tech","School","Workshop"]
 
   def to_s
     self.name
@@ -98,7 +97,7 @@ class Event < ActiveRecord::Base
   rails_admin do
     show do
       field :name
-      field :category
+      field :categories
       field :description do
         pretty_value do
           bindings[:object].description.html_safe
@@ -134,12 +133,12 @@ class Event < ActiveRecord::Base
     end
     list do
       field :name
-      field :category
+      field :categories
       field :users
     end
     edit do
       field :name
-      field :category
+      field :categories
       field :team_size
       field :photo
       field :event_date_time

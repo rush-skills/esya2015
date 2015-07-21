@@ -33,10 +33,11 @@ $(document).on('ready',function(){
 		$('#register').show();
 		var apiEndpoint = x.find("a").attr('href');
 		pushElement(x);
+		category = x.attr("data-category");
 		$.get(apiEndpoint, function(data) {
 		  type = "combined";
 			editor.setValue(data[type], true);
-			$('#first_tab').html(data["category"] + " | " + data["name"]);
+			$('#first_tab').html(category + " | " + data["name"]);
 			$('#register').attr("data-event-id",data["id"]);
 			$('#register').attr("data-event-name",data["name"]);
 			$('#register').attr("data-registered",data["registered"]);
