@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  before_filter :authenticate_participant!
+  before_filter :authenticate_participant!, only: [:create, :check]
   def create
     @event = Event.find_by_id(params[:id])
     if @event
@@ -92,5 +92,17 @@ class RegistrationsController < ApplicationController
   def check
     @event = Event.find_by_id(params[:id])
     registered?(@event)
+  end
+
+  def new
+    @events = Event.all
+  end
+
+  def new_event
+    @event = Event.find_by_id(params[:id])
+  end
+
+  def create_form
+    asd
   end
 end

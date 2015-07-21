@@ -16,11 +16,16 @@ Rails.application.routes.draw do
     get '/check_registration/:id' => "registrations#check"
     get '/profile' => 'participants#profile'
     post '/profile/update' => "participants#update"
+    post '/register' => "registrations#create_form", as: :register_form
     get "/" => 'landings#mhome'
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
+  get '/register/:id/:name' => "registrations#new_event",as: :register_event
+  get '/register' => "registrations#new"
 
   get '/coming_soon' => 'landings#coming_soon'
   get '/auth/:provider/callback' => 'sessions#create'

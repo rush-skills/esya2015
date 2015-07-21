@@ -1,0 +1,15 @@
+<section id="event" class="services bg-prime header">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <h1>Click on an event to register</h1>
+      <% @events.each do |event| %>
+        <div class="col-lg-3 col-md-4 col-sm-6 reg_event">
+          <%= link_to register_event_path(event.id,event.short_code) do %>
+            <h2><%= event.name.to_s %></h2>
+            <%= image_tag event.photo, :class => "event-header-mob" %>
+          <% end %>
+        </div>
+     <% end %>
+    </div>
+  </div>
+</section>
