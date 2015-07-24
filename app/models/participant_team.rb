@@ -29,17 +29,6 @@ class ParticipantTeam < ActiveRecord::Base
   end
 
   rails_admin do
-    show do
-      field :team
-      field :participant
-    end
-    list do
-      field :team
-      field :participant
-    end
-    edit do
-      field :team
-      field :participant
-    end
+    visible false
   end
 end

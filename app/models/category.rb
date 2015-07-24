@@ -17,15 +17,6 @@ class Category < ActiveRecord::Base
     self.name
   end
   rails_admin do
-    list do
-      field :name
-    end
-    show do
-      field :name
-      field :events
-    end
-    edit do
-      field :name
-    end
+      visible false
   end
 end
