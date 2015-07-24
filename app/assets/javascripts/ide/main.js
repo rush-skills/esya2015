@@ -374,7 +374,10 @@ $(document).on('ready',function(){
         termi.echo("[[;red;black]You need to complete your profile before registering]");
       }
       termi.echo("[[;green;black]Here are the details of your profile we have, you can edit them if you like.]");
-      state = 9;
+      if(state!=9)
+      {
+        state = 2;
+      }
       name_prompt = "[[;red;black]Name: ]";
       termi.set_prompt(name_prompt);
       termi.set_command($('#login a').first().html());
