@@ -192,7 +192,7 @@ $(document).on('ready',function(){
         }
       }
       //Profile commands
-      else if(state == 2){
+      else if(state == 2 || state == 9){
         name_prompt = "[[;red;black]Name: ]";
         email_prompt = "[[;red;black]Email: ]";
         college_prompt = "[[;red;black]College: ]";
@@ -290,6 +290,11 @@ $(document).on('ready',function(){
 
             unFocusTerminal();
             term.set_prompt('you@esya.iiitd.ac.in: '+current_directory+"> ");
+            if(state == 9){
+              term.clear();
+              state=0;
+              $('#register').click();
+            }
             state = 0;
           }
         }
@@ -332,13 +337,14 @@ $(document).on('ready',function(){
               complete = data["complete"];
               if(complete)
               {
+                termi.clear();
                 termi.echo("[[;red;black]Are you sure you want to register for the event:] [[;green;black]"+reg.attr('data-event-name')+"]");
                 termi.set_prompt('Type Y to confirm, any other key to cancel, and press enter: ');
                 state=1;
               }
               else
               {
-                state=-1;
+                state=9;
                 $("#profile").click();
               }
             }
@@ -368,7 +374,7 @@ $(document).on('ready',function(){
         termi.echo("[[;red;black]You need to complete your profile before registering]");
       }
       termi.echo("[[;green;black]Here are the details of your profile we have, you can edit them if you like.]");
-      state = 2;
+      state = 9;
       name_prompt = "[[;red;black]Name: ]";
       termi.set_prompt(name_prompt);
       termi.set_command($('#login a').first().html());
