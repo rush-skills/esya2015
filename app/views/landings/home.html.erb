@@ -92,6 +92,10 @@
     <div class="small-9 columns dark_black" id="file_tabs" style="min-height: 7%;" id="file_explorer">
       <ul class="tabs dark_black" data-tab>
         <li class="tab-title active light_black text_white" id="tabs_esya"><a class="border-left-blue" href="#" id="first_tab">Esya.html</a><a class="text_blue" href="<%= ide_url %>" onclick="resetPage()">x</a></li>
+
+        <li id="fallback" class="border-left-blue tab-title right light_black text_white" style="width: 200px;margin:0;margin-left: 15px;" onclick="window.location = '/m'">
+          <a href="/m" id="fallback-link" class="light_black text_white">Mobile/Easy Website</a>
+        </li>
         <% if participant_signed_in? %>
         <li id="login" data-logged-in="1" class="border-left-blue tab-title right light_black text_white" style="width: 150px;margin:0;margin-left: 15px;">
         <a data-dropdown="drop2" aria-controls="drop1" aria-expanded="false" class="light_black text_white"><%= current_participant.name %></a>
