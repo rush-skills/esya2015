@@ -93,8 +93,100 @@ $(document).on('ready',function(){
             pushObject.click();
           }
         }
+        else if(command.indexOf("register") > -1){
+          args = command.split(' ');
+          file = args[1];
+          pushObject = $('li[data-page='+ "event" + '][data-code=' + file + ']');
+          pushObject.click();
+          try {
+            $('#register').click();
+          } catch(e) {
+          }
+        }
+        else if(command.indexOf("login") > -1){
+          args = command.split(' ');
+          file = args[1];
+          if(file=="google" || file=="Google"){
+            window.location = "/signin/google_oauth2"
+          }
+          else if(file=="facebook" || file=="Facebook"){
+            window.location = "/signin/facebook"
+          }
+          else{
+              try {
+              $('#login a').click();
+            } catch(e) {
+            }
+          }
+        }
+        else if(command == "profile"){
+
+          login = $('#login').attr('data-logged-in');
+          if(login == 1)
+          {
+            try {
+                $('#profile').click();
+            }
+            catch(e) {
+            }
+          }
+          else{
+            term.echo("[[;red;black;]You need to login first]\nUse 'login google' or 'login facebook' to login");
+          }
+        }
+        else if(command == 'fb'){
+          window.location ="https://www.facebook.com/EsyaIIITD";
+        }
+        else if(command == 'github'){
+          window.location ="https://github.com/rush-skills/esya2015";
+        }
+
+        else if(command == 'twitter'){
+          window.location = "https://twitter.com/EsyaIIITD";
+        }
+        else if(command == 'blog'){
+          window.location ="http://esya.iiitd.edu.in/blog/";
+        }
+        else if(command == 'instagram'){
+          window.location ="https://instagram.com/esya_iiitd";
+        }
+        else if(command == 'iiitd'){
+          window.location ="http://iiitd.ac.in/";
+        }
+        else if(command == 'expand'){
+          focusTerminal();
+        }
+        else if(command == 'collapse'){
+          unFocusTerminal();
+        }
+        else if(command == 'byebye'){
+          term.echo("Bye bye");
+          setTimeout(function(){
+            window.close();
+          },1000);
+        }
         else if(command == '?'){
-          term.echo("Welcome to Esya 15 Terminal.\nYou can use the commands 'pwd','ls','cd FOLDERNAME','open FILENAME'\nFiles are colored [[;white;black]white], folders are colored [[;#4288FF;black]blue].\nYou can even run javascript(and jQuery) in this terminal, just like the one in your browser's debugger\nWe will be adding more features soon, so watch out.\nGood luck, have fun!")
+          term.echo("Welcome to Esya 15 Terminal.\nFiles are colored [[;white;black]white], folders are colored [[;#4288FF;black]blue].\nYou can even run javascript(and jQuery) in this terminal, just like the one in your browser's debugger\nWe will be adding more features soon, so watch out.\nGood luck, have fun!");
+          term.echo("Command List:\n\
+            '?': Print this help text\n\
+            'pwd': Print current working directory\n\
+            'ls': show contents of the current directory\n\
+            'cd FOLDERNAME': goto FOLDERNAME\n\
+            'open FILENAME': open the FILENAME(event/page) in the text-editor\n\
+            'login google': Login using google\n\
+            'login facebook': Login using facebook\n\
+            'profile': (After login) Setup your profile\n\
+            'register': Register for the currently open event\n\
+            'register EVENTNAME': Register for a particular event (EVENTNAME)\n\
+            'expand': Expand the terminal\n\
+            'collapse': Collapse the terminal to orignal size\n\
+            'iiitd': Goto IIIT-Delhi's Website\n\
+            'blog': Goto Esya's blog\n\
+            'fb': Goto Esya's Facebook page\n\
+            'twitter': Goto Esya's Twitter\n\
+            'instagram': Goto Esya's Instagram\n\
+            'github': Goto Github repo of this website\n\
+            ");
         }
         else if (command !== '') {
           try {
