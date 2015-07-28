@@ -17,14 +17,20 @@
                 <hr class="small">
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-6 tile">
-                        <%= link_to "Events", events_path %>
+                        <div class="inner-tile">
+                            <%= link_to "Events", events_path %>
+                        </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-6 tile">
-                        <%= link_to "Sponsors", sponsors_path %>
+                        <div class="inner-tile">
+                            <%= link_to "Sponsors", sponsors_path %>
+                        </div>
                     </div>
                     <% @pages.where("name != ?",'About').each do |page| %>
                         <div class="col-md-4 col-sm-4 col-xs-6 tile">
-                            <%= link_to page.to_s, static_page_path(page) %>
+                            <div class="inner-tile">
+                                <%= link_to page.to_s, static_page_path(page) %>
+                            </div>
                         </div>
                     <% end %>
                 </div>

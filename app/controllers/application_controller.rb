@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_path, :alert => exception.message
   end
 
+  before_filter :prepare_for_mobile
+
+  def prepare_for_mobile
+    session[:mobile_param] = params[:mobile] if params[:mobile]
+  end
+
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
@@ -15,6 +21,20 @@ class ApplicationController < ActionController::Base
   helper_method :participant_signed_in?
 
   helper_method :registered?
+
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
+  end
+
+  def check_mobile
+    if mobile_device?
+      redirect_to "/m"
+    end
+  end
 
   def registered?(event)
     event.registered?(current_participant)

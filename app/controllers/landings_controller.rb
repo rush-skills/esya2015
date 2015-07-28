@@ -1,5 +1,6 @@
 class LandingsController < ApplicationController
   layout :resolve_layout
+  before_filter :check_mobile, only: [:home]
   def index
   end
   def home

@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+//= require mobile_detect
 //= require jquery
 //= require jquery_ujs
 //= require foundation
@@ -21,5 +23,3 @@
 //= require ide/staticPages
 //= require ide/events
 //= require ide/pageContent
-
-    
