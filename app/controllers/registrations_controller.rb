@@ -100,6 +100,17 @@ class RegistrationsController < ApplicationController
 
   def new_event
     @event = Event.find_by_id(params[:id])
+    if not @event
+      redirect_to fallback_redirect
+    end
+  end
+
+  def new_event_create
+    @event = Event.find_by_id(params[:id])
+    if not @event
+      redirect_to fallback_redirect
+    end
+    asdf
   end
 
   def create_form

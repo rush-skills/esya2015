@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   get '/register/:id/:name' => "registrations#new_event",as: :register_event
+  post '/register/:id/:name' => "registrations#new_event_create",as: :register_event_create
   get '/register' => "registrations#new"
 
   get '/coming_soon' => 'landings#coming_soon'
