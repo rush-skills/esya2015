@@ -55,14 +55,14 @@ body {
 .btn-dark {
     border-radius: 0;
     color: #fff;
-    background-color: rgba(0,0,0,0.4);
+    background-color: #353535;
 }
 
 .btn-dark:hover,
 .btn-dark:focus,
 .btn-dark:active {
     color: #fff;
-    background-color: rgba(0,0,0,0.7);
+    background-color: #444;
 }
 
 .btn-light {
@@ -78,7 +78,7 @@ body {
     background-color: rgba(255,255,255,0.8);
 }
 body{
-    background: url(../img/bg.jpg) repeat center center scroll;
+    background: url(../img/bg1.png) repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -149,7 +149,10 @@ body{
 /* Footer */
 
 footer {
-    background-color: #222222;
+    background-color: #353535;
+    a{
+        color: white;
+    }
 }
 .logo{
     height: 200px
@@ -160,17 +163,17 @@ footer {
     }
 }
 .tile{
-    background:#222222; 
+    background:#444; 
     height:200px; 
     line-height:200px;
-    border:10px solid black;
+    border:10px solid #353535;
     color:white;
     font-size: 20px
 }
 .tile:hover{
-    background:#ddd;
+    background:#333;
     a{
-        color: #222;
+        color: white;
     }
 }
 .tile a{
@@ -355,4 +358,15 @@ footer {
 }
 .reg_form{
     margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    h1, h2, h3{
+        color: white;
+    }
+}
+.registers{
+    h1, h2, h3, h2:hover{
+        color: white;
+        text-decoration: none;
+    }
 }

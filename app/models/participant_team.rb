@@ -31,4 +31,9 @@ class ParticipantTeam < ActiveRecord::Base
   rails_admin do
     visible false
   end
+  validate :on => :create do
+    if team && team.participants.length >= team.event.team_size
+      errors.add(:team, :too_many_members)
+    end
+  end
 end

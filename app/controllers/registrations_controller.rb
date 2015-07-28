@@ -99,21 +99,58 @@ class RegistrationsController < ApplicationController
   end
 
   def new_event
-    @event = Event.find_by_id(params[:id])
+    @event = Event.find_by_short_code(params[:short_code])
     if not @event
       redirect_to fallback_redirect
     end
   end
 
-  def new_event_create
+  def form_create
     @event = Event.find_by_id(params[:id])
     if not @event
       redirect_to fallback_redirect
     end
-    asdf
-  end
-
-  def create_form
-    asd
+    @team = nil
+    @event.team_size.times do |x|
+      pname = params["name"+x.to_s]
+      pemail = params["email"+x.to_s]
+      pphone = params["phone"+x.to_s]
+      pcollege = params["college"+x.to_s]
+      @p = Participant.where("email = ?", pemail).first_or_create do |participant|
+        participant.email = pemail
+        participant.name = pname
+        participant.phone = pphone
+        participant.college = pcollege
+      end
+      if @event.registered? @p
+        if @event.team_event?
+          if @team
+            if @team.id == @p.get_team(@event).id
+              logger.warn "Duplicate Team warning1: #{@p.to_s} | #{@team.to_s}"
+            else
+              logger.warn "Duplicate Team warning2: #{@p.to_s} | #{@team.to_s}"
+              ParticipantTeam.create(participant: @p, team: @team)
+            end
+          else
+            @team = @p.get_team @event
+          end
+        else
+          redirect_to root_url
+        end
+      else
+        if @event.team_event?
+          if @team
+            ParticipantTeam.create(participant: @p, team: @team)
+          else
+            @team = Team.create(team_name: params[:team_name], event: @event)
+            ParticipantTeam.create(participant: @p, team: @team)
+          end
+        else
+          Registration.create(participant: @p, event: @event)
+          redirect_to root_url
+        end
+      end
+    end
+    redirect_to root_url
   end
 end

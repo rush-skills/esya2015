@@ -17,6 +17,11 @@
 #  created_at            :datetime
 #  updated_at            :datetime
 #  description           :text
+#  short_code            :string
+#
+# Indexes
+#
+#  index_events_on_short_code  (short_code) UNIQUE
 #
 
 class Event < ActiveRecord::Base
@@ -37,6 +42,8 @@ class Event < ActiveRecord::Base
   attr_accessor :photo_cache, :remove_photo
   extend Enumerize
 
+  before_update :generate_short_code
+
   def to_s
     self.name
   end
@@ -51,10 +58,11 @@ class Event < ActiveRecord::Base
 
   def get_team participant
     self.participants.where(id: participant.id).get_team(self)
+    self.save!
   end
 
-  def short_code
-    self.name.squish.downcase.tr(" ","_").tr(".","_")
+  def generate_short_code
+    self.short_code = self.name.squish.downcase.tr(" ","_").tr(".","_")
   end
 
   def is_admin user

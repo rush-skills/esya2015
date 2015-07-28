@@ -17,6 +17,11 @@
 #  created_at            :datetime
 #  updated_at            :datetime
 #  description           :text
+#  short_code            :string
+#
+# Indexes
+#
+#  index_events_on_short_code  (short_code) UNIQUE
 #
 
 require 'test_helper'

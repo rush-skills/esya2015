@@ -8,6 +8,7 @@
     <div class="row text-center">
       <div class="col-lg-10 col-lg-offset-1">
         <h2 style="color:white"><%= @event.name.to_s %></h2>
+        <%= link_to "Register", register_event_path(short_code: @event.short_code), class: "btn btn-lg btn-light" %>
         <hr class="small">
         <div class="event-text">
           <%= @event.mob_combined.html_safe %>

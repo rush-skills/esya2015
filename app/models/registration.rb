@@ -27,6 +27,10 @@ class Registration < ActiveRecord::Base
     self.participant.to_s + " - " + self.event.to_s
   end
 
+  def name
+    self.to_s
+  end
+
   rails_admin do
     show do
       field :participant
