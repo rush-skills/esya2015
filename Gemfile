@@ -71,3 +71,4 @@ gem 'mysql2', group: :production
 gem 'foundation-rails', '~> 5.5.0'
 gem 'foundation-icons-sass-rails'
 gem "rack-dev-mark"
+gem 'httparty'

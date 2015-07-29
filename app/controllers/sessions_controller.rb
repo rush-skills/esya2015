@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  skip_before_filter :verify_authenticity_token, only: [:create_api, :create_gcm]
   def new
     @redirect_url = request.env["HTTP_REFERER"] if  request.env["HTTP_REFERER"].present?
     @redirect_url ||= root_url
@@ -63,15 +63,24 @@ class SessionsController < ApplicationController
 
 
   def create_api
-    # account = case params[:provider]
-    #             when GoogleAccount::PROVIDER then GoogleAccount.find_by_token(params[:token])
-    #           end
-    account = Participant.find_by_token(params[:token])
-    render text: "Unauthoirized", status: :unauthorized and return if account.nil?
-    session[:participant_id] = account.user.id
-    respond_to do |format|
-      format.html { redirect_to root_url, :notice => "Signed in!" }
-      format.json { render json: { result: true } }
+    token = params[:token]
+    header = {"Authorization" => "OAuth " + token}
+    response = HTTParty.get("https://www.googleapis.com/plus/v1/people/me?scope=email,profile", headers: header)
+    auth = response
+
+    participant = Participant.where("provider = ? AND uid = ? OR email = ?", "google_oauth2", auth["id"], auth["emails"][0]["value"]).first_or_create! do |participant|
+      participant.email = auth["emails"][0]["value"]
+      participant.name = auth["displayName"]
+      participant.uid = auth["id"]
+      participant.provider = "google_oauth2"
+    end
+
+    if participant
+      reset_session
+      session[:participant_id] = participant.id
+      render json: {status: 200, message: "Success"}
+    else
+      render json: {status: 500, message: "Failed"}
     end
   end
 

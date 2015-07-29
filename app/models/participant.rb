@@ -48,17 +48,6 @@ class Participant < ActiveRecord::Base
     end
   end
 
-  def self.find_by_token(token)
-    validator = GoogleIDToken::Validator.new
-    jwt = validator.check(token, CLIENT_ID)
-    return if jwt.nil?
-
-    participant = where(uid: jwt['id']).first_or_initialize
-    participant.email = jwt['email']
-    participant.save!
-    participant
-  end
-
   rails_admin do
     show do
       field :name

@@ -102,6 +102,9 @@ GEM
     haml (4.0.6)
       tilt
     hashie (3.4.2)
+    httparty (0.13.5)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.3.0)
       activesupport (>= 3.0.0, < 5)
@@ -272,6 +275,7 @@ DEPENDENCIES
   foundation-icons-sass-rails
   foundation-rails (~> 5.5.0)
   google-analytics-rails
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
