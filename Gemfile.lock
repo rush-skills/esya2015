@@ -161,6 +161,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     rack (1.6.4)
+    rack-dev-mark (0.7.4)
+      rack (>= 1.1)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
       rack (~> 1.1)
@@ -278,6 +280,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   paper_trail
   pry-rails
+  rack-dev-mark
   rails (= 4.2.1)
   rails_admin
   rails_admin_history_rollback

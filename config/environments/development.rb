@@ -39,5 +39,6 @@ Rails.application.configure do
   #->Prelang
   GA.tracker = ""
 
+  config.rack_dev_mark.enable = true
 end
 
