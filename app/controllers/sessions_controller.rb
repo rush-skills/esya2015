@@ -61,4 +61,22 @@ class SessionsController < ApplicationController
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
   end
 
+
+  def create_api
+    # account = case params[:provider]
+    #             when GoogleAccount::PROVIDER then GoogleAccount.find_by_token(params[:token])
+    #           end
+    account = Participant.find_by_token(params[:token])
+    render text: "Unauthoirized", status: :unauthorized and return if account.nil?
+    session[:participant_id] = account.user.id
+    respond_to do |format|
+      format.html { redirect_to root_url, :notice => "Signed in!" }
+      format.json { render json: { result: true } }
+    end
+  end
+
+  def create_gcm
+    render json: {status: 200, key: 123}
+  end
+
 end

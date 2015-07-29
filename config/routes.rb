@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     get '/profile' => 'participants#profile'
     post '/profile/update' => "participants#update"
     get "/" => 'landings#mhome'
-
+    get '/login'  => "sessions#create_api"
+    post '/register_gcm' => "sessions#create_gcm"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
