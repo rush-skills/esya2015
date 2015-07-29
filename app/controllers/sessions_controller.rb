@@ -54,7 +54,10 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to root_url, :notice => 'Signed out!'
+    respond_to do |format|
+      format.html {redirect_to root_url, :notice => 'Signed out!'}
+      format.json {render json: {status: 200, message: "Signed out!"}}
+    end
   end
 
   def failure
