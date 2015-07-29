@@ -163,6 +163,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-dev-mark (0.7.4)
       rack (>= 1.1)
@@ -284,6 +286,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   paper_trail
   pry-rails
+  quiet_assets
   rack-dev-mark
   rails (= 4.2.1)
   rails_admin
