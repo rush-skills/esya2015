@@ -11,16 +11,16 @@
    <div id="participant<%=x%>">
      <h3>Participant <%=x + 1%></h3>
      <div class="form-group">
-       <%= text_field_tag "name#{x}",nil, :class => "form-control", :placeholder => "Name" %>
+       <%= text_field_tag "name#{x}",nil, :class => "form-control", :placeholder => "Name", :required => x==0 %>
      </div>
      <div class="form-group">
-       <%= email_field_tag "email#{x}",nil, :class => "form-control", :placeholder => "Email" %>
+       <%= email_field_tag "email#{x}",nil, :class => "form-control", :placeholder => "Email", :required => x==0  %>
      </div>
      <div class="form-group">
-       <%= number_field_tag "phone#{x}",nil, :class => "form-control", :placeholder => "Phone" %>
+       <%= number_field_tag "phone#{x}",nil, :class => "form-control", :placeholder => "Phone", :required => x==0  %>
      </div>
      <div class="form-group">
-       <%= text_field_tag "college#{x}",nil, :class => "form-control", :placeholder => "College" %>
+       <%= text_field_tag "college#{x}",nil, :class => "form-control", :placeholder => "College", :required => x==0  %>
      </div>
    </div>
  <% end %>
