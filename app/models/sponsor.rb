@@ -21,7 +21,7 @@ class Sponsor < ActiveRecord::Base
   attr_accessor :image_cache, :remove_image
 
   extend Enumerize
-  enumerize :category, in: ["Title Sponsor","Associate Sponsor","Category Sponsor","Event Partner","Partner","Online Fashion Partner","Online Shopping Partner","3D Printing Partner","Food and Beverages Partner","Hackathon Partner","Workshop Partner","Media Partner"]
+  enumerize :category, in: ["Title Sponsor","Associate Sponsor","Category Sponsor","Event Sponsor","Partner","Online Fashion Partner","Online Shopping Partner","3D Printing Partner","Food and Beverages Partner","Hackathon Partner","Workshop Partner","Style Partner","Media Partner"]
 
   def to_s
     self.name.to_s
