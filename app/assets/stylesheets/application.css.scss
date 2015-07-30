@@ -181,6 +181,9 @@ footer {
     .inner-tile{
         display: table-cell;
         vertical-align: middle;
+        a{
+            word-break: break-word;
+        }
     }
 
 }
