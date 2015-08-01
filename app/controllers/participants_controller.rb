@@ -1,5 +1,6 @@
 class ParticipantsController < ApplicationController
   before_filter :authenticate_participant!, except: [:profile]
+  skip_before_filter :verify_authenticity_token, only: [:update]
   def profile
     @participant = current_participant
     if current_participant
