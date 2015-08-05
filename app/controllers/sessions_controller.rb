@@ -67,15 +67,17 @@ class SessionsController < ApplicationController
 
   def create_api
     token = params[:token]
-    response = HTTParty.get("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + token)
-    auth = response
+    email_uid_response = HTTParty.get("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + token)
+    name_response = HTTParty.get("https://www.googleapis.com/oauth2/v1/userinfo?access_token=" + token)
 
-    uid = auth["sub"]
-    email = auth["email"]
+    uid = email_uid_response["sub"]
+    email = email_uid_response["email"]
+    name = name_response["name"]
 
     participant = Participant.where("provider = ? AND uid = ? OR email = ?", "google_oauth2", uid, email).first_or_create! do |participant|
       participant.email = email
       participant.uid = uid
+      participant.name = name
       participant.provider = "google_oauth2"
     end
 
