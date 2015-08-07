@@ -15,9 +15,9 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find_by_id(params[:id])
+      @event = Event.find_by_short_code(params[:id])
       unless @event
-        @event = Event.find_by_short_code(params[:id])
+        @event = Event.find_by_id(params[:id])      
       end
     end
 
