@@ -10,8 +10,13 @@ json.contact raw @event.contact
 if current_participant
   if @event.registered? current_participant
     json.registered "1"
-    json.team_id current_participant.get_team(@event).tid
-    json.current_team_size current_participant.get_team(@event).participants.count
+    if current_participant.get_team(@event) != nil
+      json.team_id current_participant.get_team(@event).tid
+      json.current_team_size current_participant.get_team(@event).participants.count
+    else
+      json.team_id "0"
+      json.current_team_size "1"
+    end
   else
     json.registered "0"
     json.team_id "0"
