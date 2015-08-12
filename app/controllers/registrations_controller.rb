@@ -134,8 +134,6 @@ class RegistrationsController < ApplicationController
           else
             @team = @p.get_team @event
           end
-        else
-          redirect_to root_url
         end
       else
         if @event.team_event?

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #server redirects
   get '/pcj' => redirect("https://docs.google.com/a/iiitd.ac.in/forms/d/1fCqlJgchtazO-ZPOM1TniR_k4OfSOTvABJ584xrQJo4/viewform")
   get '/blog' => redirect("/blog/")
+  get '/comedynight' => redirect("/comedynight/")
   get '/archive/2014' => redirect("/archive/2014/")
   get '/hackiiitd' => redirect("/hackiiitd/")
 
