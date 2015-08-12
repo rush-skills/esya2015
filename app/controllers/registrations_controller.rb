@@ -147,7 +147,6 @@ class RegistrationsController < ApplicationController
           end
         else
           Registration.create(participant: @p, event: @event)
-          redirect_to root_url
         end
       end
     end
