@@ -114,7 +114,7 @@ class Event < ActiveRecord::Base
     show do
       field :name
       field :participant_count do 
-        pretty_value do
+        formatted_value do
           bindings[:object].total_participant_count.to_s
         end
       end
@@ -160,7 +160,7 @@ class Event < ActiveRecord::Base
       field :categories
       field :users
       field :participant_count do 
-        pretty_value do
+        formatted_value do
           bindings[:object].total_participant_count.to_s
         end
       end
