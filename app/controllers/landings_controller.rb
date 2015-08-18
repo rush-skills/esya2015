@@ -13,6 +13,11 @@ class LandingsController < ApplicationController
   def coming_soon
   end
 
+  def schedule
+    @schedule = '<img src="http://esya.iiitd.edu.in/img/Day1.png" class="schedule"> <img src="http://esya.iiitd.edu.in/img/Day2.png" class="schedule">'
+    render json: {combined: @schedule,name: "Schedule"}
+  end
+
   private
 
   def resolve_layout

@@ -74,7 +74,8 @@ var wysihtml5ParserRules = {
         "wysiwyg-text-align-right": 1,
         "image-center": 1,
         "spons": 1,
-        "team": 1
+        "team": 1,
+        "schedule": 1
     },
     /**
      * Tag list
