@@ -106,9 +106,18 @@ class Event < ActiveRecord::Base
     string += "<h1>Contact</h1>" + self.contact.to_s if self.contact.present?
     string
   end
+
+  def total_participant_count
+    self.participants.count.to_i + self.registrations.count.to_i
+  end
   rails_admin do
     show do
       field :name
+      field :participant_count do 
+        pretty_value do
+          bindings[:object].total_participant_count.to_s
+        end
+      end
       field :categories
       field :description do
         pretty_value do
@@ -144,11 +153,17 @@ class Event < ActiveRecord::Base
       field :photo
       field :registrations
       field :teams
+      field :participants
     end
     list do
       field :name
       field :categories
       field :users
+      field :participant_count do 
+        pretty_value do
+          bindings[:object].total_participant_count.to_s
+        end
+      end
     end
     edit do
       field :name
