@@ -8,6 +8,7 @@
 #  image      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  url        :string
 #
 
 class Sponsor < ActiveRecord::Base
@@ -39,6 +40,7 @@ class Sponsor < ActiveRecord::Base
   rails_admin do
     show do
       field :name
+      field :url
       field :image
       field :category
     end
@@ -50,6 +52,7 @@ class Sponsor < ActiveRecord::Base
       field :name
       field :image
       field :category
+      field :url
     end
   end
 end

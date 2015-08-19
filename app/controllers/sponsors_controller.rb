@@ -13,7 +13,7 @@ class SponsorsController < ApplicationController
         @response +="</h1>"
       end
       filter.each do |spons|
-        @response += '<img class="spons" height="250px" src="'+spons.image.url+'">' if spons.image.present?
+        @response += '<a href="'+spons.url+'" class="sponsor_link"><img class="spons" height="250px" src="'+spons.image.url+'"></a>' if spons.image.present?
       end
     end
   end
