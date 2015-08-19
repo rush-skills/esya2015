@@ -11,6 +11,7 @@
 #  updated_at :datetime
 #  uid        :string
 #  provider   :string
+#  gcm_token  :string
 #
 
 class Participant < ActiveRecord::Base

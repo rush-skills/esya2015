@@ -91,6 +91,11 @@ class SessionsController < ApplicationController
   end
 
   def create_gcm
+    if current_participant
+      p = current_participant
+      p.gcm_token = params[:gcm_token]
+      p.save!
+    end
     render json: {status: 200, key: 123}
   end
 

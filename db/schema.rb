@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819181237) do
+ActiveRecord::Schema.define(version: 20150819200128) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150819181237) do
     t.datetime "updated_at"
     t.string   "uid"
     t.string   "provider"
+    t.string   "gcm_token"
   end
 
   create_table "registrations", force: :cascade do |t|
