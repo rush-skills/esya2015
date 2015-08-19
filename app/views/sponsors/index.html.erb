@@ -9,7 +9,13 @@
             <div class="row">
               <% @sponsors.where(category: type).each do |sponsor| %>
                 <div class="col-md-4 col-sm-4 col-xs-6">
-                  <%= image_tag sponsor.image , class: "spons-mob-image" %>
+                  <% if sponsor.url %>
+                  <%= link_to sponsor.url do %>
+                    <%= image_tag sponsor.image , class: "spons-mob-image" %>
+                  <% end %>
+                  <% else %>
+                    <%= image_tag sponsor.image , class: "spons-mob-image" %>
+                  <% end %>
                 </div>
               <% end %>
             </div>
