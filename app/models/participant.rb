@@ -23,6 +23,8 @@ class Participant < ActiveRecord::Base
   has_many :events, through: :registrations
   has_many :teams, through: :participant_teams
 
+  has_and_belongs_to_many :notifications
+
   validates :name, presence: true
   # validates :email, presence: true
   # validates :phone, presence: true

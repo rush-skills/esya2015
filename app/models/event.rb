@@ -32,6 +32,7 @@ class Event < ActiveRecord::Base
   has_many :registrations
   has_many :teams, dependent: :destroy
   has_many :participants, through: :teams
+  has_many :notifications
   has_and_belongs_to_many :categories
 
   validates :name, presence: true
@@ -154,6 +155,7 @@ class Event < ActiveRecord::Base
       field :registrations
       field :teams
       field :participants
+      field :notifications
     end
     list do
       field :name

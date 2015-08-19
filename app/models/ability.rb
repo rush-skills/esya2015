@@ -46,6 +46,7 @@ class Ability
         cannot :delete, [Participant,ParticipantTeam,Registration,Team]
         cannot :show_in_app, :all
       elsif user.role.event_head?
+        can [:read,:create], Notification
         can [:read,:export], [Participant,Registration,Team,Category,User,ParticipantTeam]
         can [:history,:update], Event do |object|
           object.is_admin(user)

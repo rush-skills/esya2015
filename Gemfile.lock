@@ -96,6 +96,9 @@ GEM
     foundation-rails (5.5.2.1)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
+    gcm (0.1.0)
+      httparty
+      json
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     google-analytics-rails (0.0.6)
@@ -276,6 +279,7 @@ DEPENDENCIES
   enumerize
   foundation-icons-sass-rails
   foundation-rails (~> 5.5.0)
+  gcm
   google-analytics-rails
   httparty
   jbuilder (~> 2.0)
